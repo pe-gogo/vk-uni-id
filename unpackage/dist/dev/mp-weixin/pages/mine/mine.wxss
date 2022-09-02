@@ -1,0 +1,30 @@
+.container.data-v-dcbcfe34 {
+  position: absolute;
+  top: calc(80rpx + var(--status-bar-height));
+  justify-content: center;
+  align-items: center;
+}
+.container .mine-banner.data-v-dcbcfe34 {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.m-grid.data-v-dcbcfe34 {
+  box-shadow: 0 20rpx 20rpx -20rpx rgba(51, 51, 51, 0.1);
+  padding: 30rpx;
+  border-radius: 10rpx;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  background-color: #FFF;
+  margin-top: -80rpx;
+  padding: 0 30;
+}
+.m-grid image.data-v-dcbcfe34 {
+  height: 80rpx;
+  width: 80rpx;
+}

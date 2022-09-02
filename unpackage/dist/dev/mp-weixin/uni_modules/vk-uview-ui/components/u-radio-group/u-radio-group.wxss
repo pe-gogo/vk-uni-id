@@ -1,0 +1,5 @@
+.u-radio-group.flex-end.data-v-fc860492 {
+  display: inline-flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}

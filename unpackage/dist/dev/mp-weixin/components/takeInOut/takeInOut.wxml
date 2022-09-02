@@ -1,0 +1,1 @@
+<view class="m-grid"><view class="entrance"><view class="item" bindtap="{{b}}"><image src="/static/images/index/takein.png" bindtap="{{a}}" class="icon"></image><view class="title">自取</view></view><view class="item" bindtap="{{d}}"><image src="/static/images/index/takeout.png" bindtap="{{c}}" class="icon"></image><view class="title">外卖</view></view></view></view>

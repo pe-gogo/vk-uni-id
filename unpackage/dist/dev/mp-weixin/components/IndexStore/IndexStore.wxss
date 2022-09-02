@@ -1,0 +1,24 @@
+.m-grid {
+  margin-top: -100rpx;
+}
+.m-grid .entrance {
+  background-color: #FFFFFF;
+  position: relative;
+  margin: 1rem;
+  border-radius: 10rpx;
+  display: flex;
+  padding: 30rpx 0;
+  box-shadow: 0 20rpx 20rpx -20rpx rgba(51, 51, 51, 0.1);
+}
+.m-grid .entrance .item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding-left: 30rpx;
+}
+.m-grid .entrance .line-pro {
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}

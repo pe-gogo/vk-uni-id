@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "添加用户地址",
+  "usingComponents": {
+    "u-input": "../../uni_modules/vk-uview-ui/components/u-input/u-input",
+    "u-form-item": "../../uni_modules/vk-uview-ui/components/u-form-item/u-form-item",
+    "u-checkbox": "../../uni_modules/vk-uview-ui/components/u-checkbox/u-checkbox",
+    "u-checkbox-group": "../../uni_modules/vk-uview-ui/components/u-checkbox-group/u-checkbox-group",
+    "u-radio": "../../uni_modules/vk-uview-ui/components/u-radio/u-radio",
+    "u-radio-group": "../../uni_modules/vk-uview-ui/components/u-radio-group/u-radio-group",
+    "u-switch": "../../uni_modules/vk-uview-ui/components/u-switch/u-switch",
+    "u-button": "../../uni_modules/vk-uview-ui/components/u-button/u-button",
+    "u-form": "../../uni_modules/vk-uview-ui/components/u-form/u-form"
+  }
+}
