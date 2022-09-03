@@ -11,6 +11,12 @@
 				"navigationBarTitleText": "添加用户地址"
 			}
 		}
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单"
+			}
+		}
         ,{
             "path" : "pages/login/login",
             "style" :                                                                                    
@@ -31,6 +37,15 @@
         }
         ,{
             "path" : "pages/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/menu/menu",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
@@ -65,6 +80,7 @@
 					"navigationBarTitleText": "密码"
 				}
 			},
+			
 			{
 				"path": "uni-id/mobile/mobile",
 				"style": {
@@ -194,6 +210,18 @@
 				"iconPath": "static/images/tabBar/index.png",
 				"selectedIconPath": "static/images/tabBar/index_selected.png",
 				"text": "主页"
+			},
+			{
+				"pagePath": "pages/menu/menu",
+				"iconPath": "static/images/tabBar/drink.png",
+				"selectedIconPath": "static/images/tabBar/drink_selected.png",
+				"text": "点单"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"iconPath": "static/images/tabBar/take.png",
+				"selectedIconPath": "static/images/tabBar/take_selected.png",
+				"text": "订单"
 			},
 			{
 				"pagePath": "pages/mine/mine",

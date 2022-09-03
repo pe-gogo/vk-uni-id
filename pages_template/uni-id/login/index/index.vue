@@ -5,26 +5,14 @@
 			<!-- 头部logo -->
 			<view class="header"><image class="logo" :src="logoImage"></image></view>
 			<!-- 主体表单 -->
-			<view class="form-view">
-
-				<view class="form-item form-border">
-					<!-- 文本框 -->
-					<input class="form-input" v-model="form1.username" type="text" :maxlength="50" placeholder="用户名/手机号" placeholder-style="'color':'#8e8e8e'" />
-				</view>
-				<view class="form-item form-border">
-					<!-- 文本框 -->
-					<input class="form-input" v-model="form1.password" type="password" placeholder="密码" placeholder-style="'color':'#8e8e8e'" />
-				</view>
-			</view>
-			<view class="login-btn">
-				<button class="btn success circle" hover-class="hover" @click="login" :plain="false" type="success" shape="circle" :hair-line="false">登 录</button>
-			</view>
+			
 			<!-- 其他登录 -->
 			<view class="login-icon-view">
 				<!-- #ifdef MP-WEIXIN -->
-				<view class="login-icon-item">
-					<u-icon name="weixin-fill" @click="login_weixin" size="80" color="#19be6b"></u-icon>
+				<view class="login-btn">
+					<button class ="btn success circle" hover-class="hover" @click="login_weixin" :plain="false" type="success" shape="circle" :hair-line="false">微信一键登录</button>
 				</view>
+			
 				<!-- #endif -->
 				<!-- #ifdef APP-PLUS -->
 				<view class="login-icon-item">

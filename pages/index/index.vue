@@ -1,12 +1,71 @@
 <template>
-	<view>
-		<view class="container">
-	<u-image :src="src" width="100%"  height="500rpx" :lazy-load="true"
-	:fade="true" duration="450" class = "u-rela"></u-image>
-			<view class="content">
-				<takeInOut></takeInOut>
+	<view class="container">
+		<view class="banner">
+			<image src="https://img-shop.qmimg.cn/s23107/2020/04/26/3eb7808bf105262604.jpg" mode="" class="bg"></image>
+			<view class="intro">
+				<view class="greet">您好,{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}</view>
+				<view class="note">一杯奶茶，一口软欧包，在奈雪遇见两种美好</view>
 			</view>
 		</view>
+		<view class="content">
+			<view class="entrance">
+				<view class="item" @tap="takein">
+					<image src="/static/images/index/zq.png" class="icon"></image>
+					<view class="title">自取</view>
+				</view>
+				<view class="item" @tap="takeout">
+					<image src="/static/images/index/wm.png" class="icon"></image>
+					<view class="title">外卖</view>
+				</view>
+			</view>
+			<view class="info">
+				<view class="integral-section">
+					<view class="top">
+						<text class="title">我的积分</text>
+						<text class="value">{{1?userInfo.balance: 0}}</text>
+					</view>
+					<view class="bottom">
+							进入积分商城兑换奈雪券及周边好礼
+					</view>
+				</view>
+				<view class="qrcode-section">
+					<image src="../../static/images/index/qrcode.png"></image>
+					<text>会员码</text>
+				</view>
+			</view>
+			
+			<view class="navigators">
+				<view class="left">
+					<view class="grid flex-column just-content-center">
+						<view class="d-flex align-items-center">
+							<image src="../../static/images/index/csc.png" class="mark-img"></image>
+							<view class="font-size-sm text-color-base">奈雪的茶商城</view>
+						</view>
+						<view class="text-color-assist" style="margin-left: 40rpx; font-size: 20rpx"></view>
+					</view>
+					<view class="grid justify-content-end align-items-end ">
+						<image src="../../static/images/index/yzclh.png" class="yzclh-img"></image>
+					</view>
+				</view>
+				<view class="right">
+					<view class="tea-activity" @tap="invite">
+						<image src="/static/images/index/mcsb.png" class="mark-img"></image>
+						<view>买茶送包</view>
+						<view class="right-img">
+							<image src="/static/images/index/mcsb_bg.png" mode="widthFix"></image>
+						</view>
+					</view>
+					<view class="member-gifts" @tap="packages">
+						<image src="/static/images/index/hyjb.png" class="mark-img"></image>
+						<view>会员劵包</view>
+						<view class="right-img">
+							<image src="/static/images/index/hyjb_bg.png" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
 	</view>
 </template>
 
@@ -14,60 +73,321 @@
 	var vk = uni.vk;
 	export default {
 		data() {
-			// 页面数据变量
 			return {
-				src: 'https://img-qn.51miz.com/Element/00/64/92/22/3ee80c66_E649222_36ee1039.jpg!/quality/90/unsharp/true/compress/true/format/jpg'
+				hasWeixinAuth: true,
+				encryptedKey:"",
+				image:"",
+				data:{},
+				userInfo:[]
 			}
 		},
-		onPageScroll(e) {
-			this.scrollTop = e.scrollTop;
+		onLaunch() {
+			vk = uni.vk;
+			this.init();
 		},
-		// 监听 - 页面每次【加载时】执行(如：前进)
-		onLoad(options = {}) {
-			
-		},
-		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
-		onReady(){
-			
-		},
-		// 监听 - 页面每次【显示时】执行(如：前进和返回) (页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面)
-		onShow() {
-			
-		},
-		// 监听 - 页面每次【隐藏时】执行(如：返回)
-		onHide() {
-			
-		},
-		// 监听 - 点击右上角转发时
-		onShareAppMessage(options) {
-			
-		},
-		// 函数
 		methods: {
-			// 页面数据初始化函数
-			init(res){
-				vk.alert("内容");
+			takeout(){
+				if(vk.getVuex('$user.userInfo._id')){
+					vk.navigateTo('/pages/address/address');
+				}else{
+					vk.navigateTo('/pages/login/login');
+				}
 			},
-			pageTo(path){
-				vk.navigateTo(path);
-			}
-		},
-		// 监听器
-		watch:{
+			setUserInfo(){
+				let that = this;
+				// #ifdef MP-WEIXIN
+				try {
+					uni.getUserProfile({
+						desc:"用于快速设置昵称头像",
+						success:(res) => {
+							let { userInfo } = res;
+							vk.userCenter.updateUser({
+								data:{
+									nickname : userInfo.nickName,
+									avatar : userInfo.avatarUrl,
+									gender : userInfo.gender
+								},
+								success: (data) => {
+									vk.alert("设置成功");
+								}
+							});
+						}
+					});
+				}catch(err){
+					vk.alert("您的微信版本过低，请先更新微信!");
+				}
+				// #endif
 			
-		},
-		// 计算属性
-		computed:{
+				// #ifndef MP-WEIXIN
+				uni.login({
+				  provider: 'weixin',
+				  success: (loginRes) => {
+				    // 获取用户信息
+				    uni.getUserInfo({
+				      provider: 'weixin',
+				      success: (data) => {
+								that.data = data;
+								let { userInfo } = data;
+								vk.userCenter.updateUser({
+									data:{
+										nickname : userInfo.nickName,
+										avatar : userInfo.avatarUrl,
+										gender : userInfo.gender
+									},
+									success: (data) => {
+										vk.alert("设置成功");
+									}
+								});
+				      }
+				    });
+				  }
+				});
+				// #endif
+			}
+			
+			,
+			init(){
+				let that = this;
+				// #ifdef MP-WEIXIN
+				vk.userCenter.code2SessionWeixin({
+					data:{
+						needCache:true
+					},
+					success: (data) => {
+						that.encryptedKey = data.encryptedKey;
+					},
+				});
+				// #endif
+			},
+			
+			loginByWeixin(type){
+				let that = this;
+				vk.userCenter.loginByWeixin({
+					data:{
+						type
+					},
+					success: (data) => {
+						vk.alert(data.msg);
+						that.data = data;
+						that.userInfo = data.userInfo;
+						vk.vuex.set('$user.userInfo.avatar', that.userInfo.avatar);
+						vk.vk.navigateTo({
+							url:'/pages/index/index',
+							
+						});
+					}
+				});
+			},
 			
 		}
 	}
 </script>
-<style lang="scss" scoped>
+
+<style lang="scss">
+	.banner{
+		position: relative;
+		width: 100%;
+		height: 600rpx;
+		.bg{
+			height: 600rpx;
+			width: 100%;
+		}
+		.intro{
+			// 固定的
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			color: #ffffff;
+			// location
+			top: calc(50rpx + var(--status-bar-height));
+			left: 40rpx;
+			.greet{
+				font-size: $font-size-lg;
+				margin-bottom: 10rpx;
+			}
+			.note{
+				font-size: $font-size-sm;
+			}
+		}
+	}
 	.content{
 		padding: 0 30rpx;
 	}
-
 	
-	
+	.entrance{
+		background-color: #FFFFFF;
+		position: relative;
+		margin-top: -80rpx;
+		margin-bottom: 30rpx;
+		border-radius: 10rpx;
+		box-shadow: $box-shadow;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 30rpx 0;
+		.item{
+			position: relative;
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			
+			&:nth-child(1):after {
+				content: '';
+				position: absolute;
+				width: 1rpx;
+				background-color: #ddd;
+				right: 0;
+				height: 100%;
+				transform: scaleX(0.5) scaleY(0.8);
+			}
+			
+			.icon{
+				width: 84rpx;
+				height: 84rpx;
+				margin: 20rpx;
+			}
+			.title{}
+			font-size: 30rpx;
+			font-weight: 600;
+			color: $text-color-base;
+		}	
+}
+.info{
+	position: relative;
+	background-color: #FFFFFF;
+	margin-bottom: 30rpx;
+	padding: 30rpx;
+	display: flex;
+	align-items: center;
+	border-radius: $border-radius-base;
+	box-shadow: $box-shadow;
+	.integral-section{
+		flex: 1;
+		flex-direction: column;
+		justify-content: center;
+		display: flex;
+		.top{
+			display: flex;
+			align-items: center;
+			.title{
+				color: $text-color-base;
+				font: $font-size-base;
+				margin-right: 10rpx;
+			}
+			.value{
+				font-size: 40rpx;
+				font-weight: bold;
+			}
+		}
+		.bottom{
+			color: $text-color-assist;
+			font-size: $font-size-sm;
+			align-items: center;
+		}
+	}
+	.qrcode-section{
+		color: $color-primary;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: $font-size-sm;
+		
+		image {
+			width: 40rpx;
+			height: 40rpx;
+			margin-bottom: 10rpx;
+		}
+	}
+}
+	.navigators{
+		width: 100%;
+		margin-bottom: 20rpx;
+		border-radius: 10rpx;
+		background-color: #FFFFFF;
+		box-shadow: $box-shadow;
+		padding: 20rpx;
+		display: flex;
+		align-items: stretch;
+		
+		.left{
+			width: 340rpx;
+			margin-right: 20rpx;
+			display: flex;
+			padding: 0 20rpx;
+			flex-direction: column;
+			font-size: $font-size-sm;
+			color: $text-color-base;
+			background-color: #F2F2E6;
+			.grid{
+				height: 50%;
+				display: flex;
+			}
+		}
+		.mark-img{
+			width: 30rpx;
+			height: 30rpx;
+			margin-right: 10rpx;
+		}
+		.yzclh-img{
+			width: 214.86rpx;
+			height: 122.96rpx;
+			margin-top: 10rpx;
+		}
+		
+		.right {
+				width: 290rpx;
+				display: flex;
+				flex-direction: column;
+				
+				.tea-activity, .member-gifts {
+					width: 100%;
+					display: flex;
+					padding: 20rpx;
+					font-size: $font-size-sm;
+					color: $text-color-base;
+					align-items: center;
+					position: relative;
+				}
+				
+				.tea-activity {
+					background-color: #FDF3F2;
+					margin-bottom: 20rpx;
+				}
+				
+				.member-gifts {
+					background-color: #FCF6D4;
+				}
+				
+				.right-img {
+					flex: 1;
+					position: relative;
+					margin-left: 20rpx;
+					margin-right: -20rpx;
+					margin-bottom: -20rpx;
+					display: flex;
+					align-items: flex-end;
+					
+					image {
+						width: 100%;
+					}
+				}
+			
+			
+			.mark-img {
+				width: 30rpx;
+				height: 30rpx;
+				margin-right: 10rpx;
+			}
+			
+			.yzclh-img {
+				height: 122.96rpx;
+				width: 214.86rpx;
+			}
+		}
+		
+	}
 	
 </style>

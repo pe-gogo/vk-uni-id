@@ -99,28 +99,10 @@ const _sfc_main = {
   },
   computed: {}
 };
-if (!Array) {
-  const _easycom_u_icon2 = common_vendor.resolveComponent("u-icon");
-  _easycom_u_icon2();
-}
-const _easycom_u_icon = () => "../../../../uni_modules/vk-uview-ui/components/u-icon/u-icon.js";
-if (!Math) {
-  _easycom_u_icon();
-}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: $data.logoImage,
-    b: $data.form1.username,
-    c: common_vendor.o(($event) => $data.form1.username = $event.detail.value),
-    d: $data.form1.password,
-    e: common_vendor.o(($event) => $data.form1.password = $event.detail.value),
-    f: common_vendor.o((...args) => $options.login && $options.login(...args)),
-    g: common_vendor.o($options.login_weixin),
-    h: common_vendor.p({
-      name: "weixin-fill",
-      size: "80",
-      color: "#19be6b"
-    })
+    b: common_vendor.o((...args) => $options.login_weixin && $options.login_weixin(...args))
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-acf68ad8"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages_template/uni-id/login/index/index.vue"]]);

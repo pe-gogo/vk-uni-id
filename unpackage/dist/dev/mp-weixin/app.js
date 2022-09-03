@@ -61,9 +61,11 @@ require("./uni_modules/vk-unicloud/vk_modules/vk-unicloud-page/libs/function/upd
 if (!Math) {
   "./pages/index/index.js";
   "./pages/address/addSite.js";
+  "./pages/order/order.js";
   "./pages/login/login.js";
   "./pages/mine/mine.js";
   "./pages/address/address.js";
+  "./pages/menu/menu.js";
   "./pages_template/db-test/db-test.js";
   "./pages_template/db-test/list/list.js";
   "./pages_template/uni-id/index/index.js";

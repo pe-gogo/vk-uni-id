@@ -22,7 +22,7 @@ if (!Math) {
   (_easycom_u_image + _easycom_u_avatar + _easycom_IndexStore)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
+  return common_vendor.e({
     a: common_vendor.p({
       src: $data.src,
       width: "100%",
@@ -31,12 +31,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       fade: true,
       duration: "450"
     }),
-    b: common_vendor.p({
+    b: _ctx.vk.getVuex("$user.userInfo._id")
+  }, _ctx.vk.getVuex("$user.userInfo._id") ? {
+    c: common_vendor.p({
       size: 130,
       src: _ctx.vk.getVuex("$user.userInfo.avatar")
     }),
-    c: common_vendor.t(_ctx.vk.getVuex("$user.userInfo.nickname") || _ctx.vk.getVuex("$user.userInfo.username"))
-  };
+    d: common_vendor.t(_ctx.vk.getVuex("$user.userInfo.nickname") || _ctx.vk.getVuex("$user.userInfo.username"))
+  } : {
+    e: common_vendor.p({
+      size: 130
+    })
+  });
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dcbcfe34"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages/mine/mine.vue"]]);
 wx.createPage(MiniProgramPage);

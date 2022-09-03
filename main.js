@@ -1,7 +1,6 @@
 import App from './App'
 import store from './store'
 import config from '@/app.config.js'
-
 // 引入 uView UI
 import uView from './uni_modules/vk-uview-ui';
 // 引入 vk框架前端

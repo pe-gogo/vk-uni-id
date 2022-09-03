@@ -1,54 +1,29 @@
 <template>
-	<view class="bg">
-	<view class="container">
-		<view class="intro">
-			<image src="/static/images/logo.png"></image>
-			<view class="tips">
-				一杯好茶，一口软欧包
-				<br>
-				在奈雪遇见两种美好
-			</view>
-		</view>
-		<view class="bottom">
-			<!-- #ifdef H5 -->
-				<button type="primary" size="default" class="login-btn" @tap="loginByWeixin">
-					登录
-				</button>
-			<!-- #endif -->
-			<!-- #ifdef MP-WEIXIN -->
-				<button type="primary" size="default" class="login-btn" open-type="getUserInfo" lang="zh_CN" @tap="loginByWeixin">
-					<image src="/static/images/mine/wechat.png"></image>
-					微信一键登录
-				</button>
-			<!-- #endif -->
-			<view class="d-flex flex-column justify-content-evenly align-items-center text-center" style="height: 30vh;">
-				<view class="w-100 font-size-base text-color-assist">新用户登录即加入会员，享会员权益</view>
-				<view class="w-100 row d-flex just-content-around align-items-center font-size-sm text-color-assist">
-					<view class="grid">
-						<image src="/static/images/mine/rhyl.png"></image>
-						<view>入会有礼</view>
-					</view>
-					<view class="grid">
-						<image src="/static/images/mine/jfdh.png"></image>
-						<view>积分兑换</view>
-					</view>
-					<view class="grid">
-						<image src="/static/images/mine/sjtq.png"></image>
-						<view>升级特权</view>
-					</view>
-					<view class="grid">
-						<image src="/static/images/mine/srtq.png"></image>
-						<view>生日特权</view>
-					</view>
-					<view class="grid">
-						<image src="/static/images/mine/nxbz.png"></image>
-						<view>奈雪宝藏</view>
-					</view>
+	<view class="app login">
+		<!-- 页面内容开始 -->
+		<view class="content">
+			<!-- 头部logo -->
+			<view class="header"><image class="logo" :src="logoImage"></image></view>
+			<!-- 主体表单 -->
+			
+			<!-- 其他登录 -->
+			<view class="login-icon-view">
+				<!-- #ifdef MP-WEIXIN -->
+				<view class="login-btn">
+					<button class ="btn success circle" hover-class="hover" @click="login_weixin" :plain="false" type="success" shape="circle" :hair-line="false">微信一键登录</button>					
 				</view>
-				<view class="font-size-base text-color-primary">会员权益说明</view>
+			
+				<!-- #endif -->
+				<!-- #ifdef APP-PLUS -->
+				<view class="login-icon-item">
+					<u-icon name="weixin-fill" @click="login_weixin" size="80" color="#19be6b"></u-icon>
+				</view>
+				<!-- #endif -->
 			</view>
+
 		</view>
-	</view>
+
+		<!-- 页面内容结束 -->
 	</view>
 </template>
 
@@ -56,108 +31,110 @@
 	var vk = uni.vk;
 	export default {
 		data() {
+			// 页面数据变量
 			return {
-				hasWeixinAuth: true,
-				encryptedKey:"",
-				image:"",
-				data:{},
-				userInfo:[]
+				// init请求返回的数据
+				data:{
+
+				},
+				// 表单请求数据
+				scrollTop:0,
+				logoImage: "/static/logo.png",
+
 			}
 		},
-		onLaunch() {
-			vk = uni.vk;
-			this.init();
+		onPageScroll(e) {
+			this.scrollTop = e.scrollTop;
 		},
+		// 监听 - 页面每次【加载时】执行(如：前进)
+		onLoad(options) {
+			vk = uni.vk;
+			this.init(options);
+		},
+		// 监听 - 页面【首次渲染完成时】执行。注意如果渲染速度快，会在页面进入动画完成前触发
+		onReady(){
+
+		},
+		// 监听 - 页面每次【显示时】执行(如：前进和返回) (页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面)
+		onShow() {
+			// #ifdef MP-WEIXIN
+			uni.hideHomeButton();
+			// #endif
+		},
+		// 监听 - 页面每次【隐藏时】执行(如：返回)
+		onHide() {
+
+
+		},
+		// 监听 - 页面下拉刷新
+		onPullDownRefresh() {
+			setTimeout(() => {
+				uni.stopPullDownRefresh();
+			}, 1000);
+		},
+		// 监听 - 点击右上角转发时
+		onShareAppMessage(options) {
+
+		},
+		// 函数
 		methods: {
-			init(){
-				let that = this;
-				// #ifdef MP-WEIXIN
-				vk.userCenter.code2SessionWeixin({
-					data:{
-						needCache:true
-					},
-					success: (data) => {
-						that.encryptedKey = data.encryptedKey;
-					},
-				});
-				// #endif
+			// 页面数据初始化函数
+			init(options = {}){
+				console.log("init: ",options);
 			},
-			
-			loginByWeixin(type){
+			pageTo(path){
+				vk.navigateTo(path);
+			},
+			// 账号密码登录
+		
+			login_success(data){
+				let that = this;
+				// 检查是否有指定跳转的页面
+				if(vk.navigate.originalPage){
+					vk.navigate.originalTo();
+					return false;
+				}
+				// 跳转到首页,或页面返回
+				var pages = getCurrentPages();
+				console.log(pages.length,pages[pages.length-1].route);
+				if(pages.length > 1
+					&& pages[pages.length-2]
+					&& pages[pages.length-2].route
+					&& pages[pages.length-2].route.indexOf('login/index') == -1
+				){
+					const eventChannel = that.getOpenerEventChannel();
+					eventChannel.emit('loginSuccess', {});
+					vk.navigateBack();
+				}else{
+					// 进入首页
+					vk.navigateToHome();
+				}
+			}
+			,
+			// 第三方登录 - 微信
+			login_weixin(e){
 				let that = this;
 				vk.userCenter.loginByWeixin({
-					data:{
-						type
-					},
 					success: (data) => {
-						vk.alert(data.msg);
-						that.data = data;
-						that.userInfo = data.userInfo;
-						vk.vuex.set('$user.userInfo.avatar', that.userInfo.avatar);
-						vk.vk.navigateTo({
-							url:'/pages/index/index',
+						uni.getUserProfile({
+							provider:"weixin",
 							
-						});
-
+						})
+						vk.toast("登陆成功!");
+						setTimeout(() => {
+							// 跳转到首页,或页面返回
+							that.login_success(data);
+						},1000);
 					}
 				});
-			},
-			
+			}
+		},
+		// 计算属性
+		computed:{
+
 		}
 	}
 </script>
-
 <style lang="scss" scoped>
-	.intro {
-		width: 100%;
-		height: 60vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
-		
-		image {
-			width: 165rpx;
-			height: 165rpx;
-		}
-		
-		.tips {
-			line-height: 72rpx;
-			text-align: center;
-		}
-	}
-	
-	.bottom {
-		height: 40vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding: 0 40rpx;
-		
-		.login-btn {
-			width: 100%;
-			border-radius: 50rem !important;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 10rpx 0;
-			
-			image {
-				width: 36rpx;
-				height: 30rpx;
-				margin-right: 10rpx;
-			}
-		}
-		
-		.row {
-			.grid {
-				width: 20%;
-				image {
-					width: 60rpx;
-					height: 60rpx;
-					margin-bottom: 10rpx;
-				}
-			}
-		}
-	}
+	@import url("../../common/css/main.css");
 </style>

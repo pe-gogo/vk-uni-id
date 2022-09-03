@@ -6,10 +6,17 @@
 	<view class="container">
 		<view class="content">
 			<!-- 头像与用户名 -->
-			<view class="mine-banner">
+		
+			<view v-if="vk.getVuex('$user.userInfo._id')" class="mine-banner">
 				<u-avatar :size="130" :src="vk.getVuex('$user.userInfo.avatar')"></u-avatar>
 				<view style="color: white;font-size: 40rpx;font-weight: 600;">
 					{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}
+				</view>
+			</view>
+			<view  v-else class="mine-banner">
+				<u-avatar :size="130"></u-avatar>
+				<view style="color: white;font-size: 40rpx;font-weight: 600;">
+						未登录
 				</view>
 			</view>
 		</view>

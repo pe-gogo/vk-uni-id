@@ -7012,6 +7012,12 @@ const pages = [
     }
   },
   {
+    path: "pages/order/order",
+    style: {
+      navigationBarTitleText: "\u8BA2\u5355"
+    }
+  },
+  {
     path: "pages/login/login",
     style: {
       navigationBarTitleText: "\u767B\u5F55",
@@ -7027,6 +7033,13 @@ const pages = [
   },
   {
     path: "pages/address/address",
+    style: {
+      navigationBarTitleText: "",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/menu/menu",
     style: {
       navigationBarTitleText: "",
       enablePullDownRefresh: false
@@ -7189,6 +7202,18 @@ const tabBar = {
       iconPath: "static/images/tabBar/index.png",
       selectedIconPath: "static/images/tabBar/index_selected.png",
       text: "\u4E3B\u9875"
+    },
+    {
+      pagePath: "pages/menu/menu",
+      iconPath: "static/images/tabBar/drink.png",
+      selectedIconPath: "static/images/tabBar/drink_selected.png",
+      text: "\u70B9\u5355"
+    },
+    {
+      pagePath: "pages/order/order",
+      iconPath: "static/images/tabBar/take.png",
+      selectedIconPath: "static/images/tabBar/take_selected.png",
+      text: "\u8BA2\u5355"
     },
     {
       pagePath: "pages/mine/mine",
@@ -7431,7 +7456,7 @@ switch (f) {
   default:
     g = f;
 }
-const p = h('{\n    "address": [\n        "127.0.0.1",\n        "192.168.0.192"\n    ],\n    "debugPort": 52575,\n    "initialLaunchType": "local",\n    "servePort": 52576,\n    "skipFiles": [\n        "<node_internals>/**/*.js",\n        "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), m = h('[{"provider":"aliyun","spaceName":"vk-demo","spaceId":"9b263989-3b34-486f-a7ad-68fb4c0c0449","clientSecret":"FsVU9+suIZ0wLYYTia/iBA==","endpoint":"https://api.bspapp.com"}]');
+const p = h('{\n    "address": [\n        "127.0.0.1",\n        "192.168.0.192"\n    ],\n    "debugPort": 58537,\n    "initialLaunchType": "local",\n    "servePort": 58539,\n    "skipFiles": [\n        "<node_internals>/**/*.js",\n        "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), m = h('[{"provider":"aliyun","spaceName":"vk-demo","spaceId":"9b263989-3b34-486f-a7ad-68fb4c0c0449","clientSecret":"FsVU9+suIZ0wLYYTia/iBA==","endpoint":"https://api.bspapp.com"}]');
 let _ = "";
 try {
   _ = "__UNI__6FA9A80";

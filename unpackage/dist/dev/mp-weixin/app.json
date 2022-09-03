@@ -2,9 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/address/addSite",
+    "pages/order/order",
     "pages/login/login",
     "pages/mine/mine",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/menu/menu"
   ],
   "subPackages": [
     {
@@ -48,6 +50,18 @@
         "iconPath": "static/images/tabBar/index.png",
         "selectedIconPath": "static/images/tabBar/index_selected.png",
         "text": "主页"
+      },
+      {
+        "pagePath": "pages/menu/menu",
+        "iconPath": "static/images/tabBar/drink.png",
+        "selectedIconPath": "static/images/tabBar/drink_selected.png",
+        "text": "点单"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "static/images/tabBar/take.png",
+        "selectedIconPath": "static/images/tabBar/take_selected.png",
+        "text": "订单"
       },
       {
         "pagePath": "pages/mine/mine",
