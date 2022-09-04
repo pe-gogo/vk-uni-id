@@ -10,10 +10,10 @@
 			</view>
 			<view class="bottom">
 				广东省深圳市宝安区 自由路66号
-				<u-icon name="edit-pen" :size="40" color="#999999"></u-icon>
+				<u-icon name="edit-pen" @click="update" :size="40" color="#999999"></u-icon>
 			</view>
 		</view>
-		<view class="addSite" @tap="toAddSite">
+		<view class="addSite" @tap="add">
 			<view class="add">
 				<u-icon name="plus" color="#ffffff" class="icon" :size="30"></u-icon>新建收货地址
 			</view>
@@ -22,16 +22,38 @@
 </template>
 
 <script>
+const addressObject = vk.importObject("client/address"); // 这段代码可以写在外层顶部，也可以直接写在对应函数内部。
 export default {
 	data() {
 		return {
-			siteList: []
+			siteList: [],
+			hasWeixinAuth: true,
+			encryptedKey:"",
+			image:"",
+			data:{},
+			userInfo:[]
 		};
 	},
 	onLoad() {
 		this.getData();
 	},
 	methods: {
+		async add(){
+			await addressObject.add({
+				title:'请求中',
+				data:{
+					data: this.data
+				}
+			})
+		},
+		async update(){
+			await addressObject.update({
+				title:'请求中',
+				data:{
+					data: this.data
+				}
+			})
+		},
 		getData() {
 			this.siteList = [
 				{

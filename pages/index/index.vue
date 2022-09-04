@@ -9,7 +9,7 @@
 		</view>
 		<view class="content">
 			<view class="entrance">
-				<view class="item" @tap="takein">
+				<view class="item" @tap="takeIn">
 					<image src="/static/images/index/zq.png" class="icon"></image>
 					<view class="title">自取</view>
 				</view>
@@ -86,6 +86,10 @@
 			this.init();
 		},
 		methods: {
+			takeIn(){
+				
+			},
+			
 			takeout(){
 				if(vk.getVuex('$user.userInfo._id')){
 					vk.navigateTo('/pages/address/address');
@@ -93,59 +97,6 @@
 					vk.navigateTo('/pages/login/login');
 				}
 			},
-			setUserInfo(){
-				let that = this;
-				// #ifdef MP-WEIXIN
-				try {
-					uni.getUserProfile({
-						desc:"用于快速设置昵称头像",
-						success:(res) => {
-							let { userInfo } = res;
-							vk.userCenter.updateUser({
-								data:{
-									nickname : userInfo.nickName,
-									avatar : userInfo.avatarUrl,
-									gender : userInfo.gender
-								},
-								success: (data) => {
-									vk.alert("设置成功");
-								}
-							});
-						}
-					});
-				}catch(err){
-					vk.alert("您的微信版本过低，请先更新微信!");
-				}
-				// #endif
-			
-				// #ifndef MP-WEIXIN
-				uni.login({
-				  provider: 'weixin',
-				  success: (loginRes) => {
-				    // 获取用户信息
-				    uni.getUserInfo({
-				      provider: 'weixin',
-				      success: (data) => {
-								that.data = data;
-								let { userInfo } = data;
-								vk.userCenter.updateUser({
-									data:{
-										nickname : userInfo.nickName,
-										avatar : userInfo.avatarUrl,
-										gender : userInfo.gender
-									},
-									success: (data) => {
-										vk.alert("设置成功");
-									}
-								});
-				      }
-				    });
-				  }
-				});
-				// #endif
-			}
-			
-			,
 			init(){
 				let that = this;
 				// #ifdef MP-WEIXIN
@@ -158,29 +109,9 @@
 					},
 				});
 				// #endif
-			},
-			
-			loginByWeixin(type){
-				let that = this;
-				vk.userCenter.loginByWeixin({
-					data:{
-						type
-					},
-					success: (data) => {
-						vk.alert(data.msg);
-						that.data = data;
-						that.userInfo = data.userInfo;
-						vk.vuex.set('$user.userInfo.avatar', that.userInfo.avatar);
-						vk.vk.navigateTo({
-							url:'/pages/index/index',
-							
-						});
-					}
-				});
-			},
-			
-		}
-	}
+			}
+		},
+}		
 </script>
 
 <style lang="scss">

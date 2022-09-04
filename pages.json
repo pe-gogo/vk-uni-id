@@ -10,7 +10,7 @@
 			"style": {
 				"navigationBarTitleText": "添加用户地址"
 			}
-		}
+		},
 		{
 			"path": "pages/order/order",
 			"style": {

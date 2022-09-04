@@ -1,1 +1,1 @@
-<view><map controls="{{a}}" latitude="{{b}}" longitude="{{c}}" markers="{{d}}" polyline="{{e}}" scale="{{f}}" show-compass="{{true}}" show-location="{{true}}" style="{{g}}" bindcontroltap="{{h}}" bindregionchange="{{i}}" id="map2"></map></view>
+<view></view>

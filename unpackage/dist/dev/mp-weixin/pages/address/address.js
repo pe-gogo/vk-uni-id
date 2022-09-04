@@ -1,15 +1,37 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+const addressObject = vk.importObject("client/address");
 const _sfc_main = {
   data() {
     return {
-      siteList: []
+      siteList: [],
+      hasWeixinAuth: true,
+      encryptedKey: "",
+      image: "",
+      data: {},
+      userInfo: []
     };
   },
   onLoad() {
     this.getData();
   },
   methods: {
+    async add() {
+      await addressObject.add({
+        title: "\u8BF7\u6C42\u4E2D",
+        data: {
+          data: this.data
+        }
+      });
+    },
+    async update() {
+      await addressObject.update({
+        title: "\u8BF7\u6C42\u4E2D",
+        data: {
+          data: this.data
+        }
+      });
+    },
     getData() {
       this.siteList = [
         {
@@ -78,17 +100,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         e: res.id
       };
     }),
-    b: common_vendor.p({
+    b: common_vendor.o($options.update),
+    c: common_vendor.p({
       name: "edit-pen",
       size: 40,
       color: "#999999"
     }),
-    c: common_vendor.p({
+    d: common_vendor.p({
       name: "plus",
       color: "#ffffff",
       size: 30
     }),
-    d: common_vendor.o((...args) => $options.toAddSite && $options.toAddSite(...args))
+    e: common_vendor.o((...args) => $options.add && $options.add(...args))
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-db675620"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages/address/address.vue"]]);
