@@ -1,68 +1,54 @@
 <template>
-	<u-form :model="form" ref="uForm">
+	<u-form :model="form" ref="uForm" >
 		<u-form-item label="姓名"><u-input v-model="form.name" /></u-form-item>
-		<u-form-item label="简介"><u-input v-model="form.intro" /></u-form-item>
-		<u-form-item label="性别"><u-input v-model="form.sex" type="select" /></u-form-item>
-		<u-form-item label="水果">
-			<u-checkbox-group>
-				<u-checkbox v-model="item.checked" v-for="(item, index) in checkboxList" :key="index" :name="item.name">
-					{{ item.name }}
-				</u-checkbox>
-			</u-checkbox-group>
+		<u-form-item label="电话"><u-input v-model="form.number" /></u-form-item>
+		<u-form-item label="省份">
+			<u-input v-model="form.province"></u-input>
 		</u-form-item>
-		<u-form-item label="味道">
-			<u-radio-group v-model="radio">
-				<u-radio v-for="(item, index) in radioList" :key="index" :name="item.name" :disabled="item.disabled">
-					{{ item.name }}
-				</u-radio>
-			</u-radio-group>
+		<u-form-item label="地址">
+			<u-input v-model="form.site"></u-input>
 		</u-form-item>
-		<u-form-item label="开关"><u-switch slot="right" v-model="switchVal"></u-switch></u-form-item>
-		<u-form-item>
-			<u-button>提交</u-button>
+ 		<u-form-item style="display: flex;align-items: center;justify-content: center;" >
+			<view class="u-flex" style="display: flex;align-items: center;">
+				<u-button  type ="success" size="medium">提交</u-button>
+			</view>
 		</u-form-item>
 	</u-form>
 </template>
 
 <script>
+	var vk = uni.vk;
+	const addressObject = vk.importObject("client/address");
 export default {
+	onLaunch() {
+		vk = uni.vk;
+		this.init();
+	},
 	data() {
 		return {
+			siteList: [],
+			hasWeixinAuth: true,
+			encryptedKey:"",
+			image:"",
+			data:{},
+			userInfo:[],
 			form: {
 				name: '',
-				intro: '',
-				sex: ''
+				number: '',
+				province: '',
+				site:''
 			},
-			checkboxList: [
-				{
-					name: '苹果',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '雪梨',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '柠檬',
-					checked: false,
-					disabled: false
-				}
-			],
-			radioList: [
-				{
-					name: '鲜甜',
-					disabled: false
-				},
-				{
-					name: '麻辣',
-					disabled: false
-				}
-			],
-			radio: '',
-			switchVal: false
 		};
-	}
-};
+	},
+
+	methods: {
+	
+	},
+}
 </script>
+
+<style lang="scss" scoped>
+	.submit{
+		
+	}
+</style>

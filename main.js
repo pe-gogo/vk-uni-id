@@ -5,7 +5,6 @@ import config from '@/app.config.js'
 import uView from './uni_modules/vk-uview-ui';
 // 引入 vk框架前端
 import vk from './uni_modules/vk-unicloud';
-
 // #ifndef VUE3
 import Vue from 'vue'
 

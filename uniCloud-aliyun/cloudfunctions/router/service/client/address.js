@@ -95,13 +95,33 @@ var cloudObject = {
 					_id:uid
 				},
 				dataJson:{
-					address: '2'
+					
 				}
 			});
 	
 			// 业务逻辑结束-----------------------------------------------------------
 			return res;
 		},
+		/**
+			 * 模板函数
+			 * @url client/address.finyById 前端调用的url参数地址
+			 */
+		findById: async function(data){
+				let { uid } = this.getClientInfo(); // 获取客户端信息
+				let res = { code : 0, msg : 'ok' };
+			  // 业务逻辑开始----------------------------------------------------------- 
+				
+				res.item = await vk.baseDao.findById({
+					dbName: dbName.address,
+					id:	data.userInfo._id
+				})
+				
+				// 上面的 fieldJson 可以设置 显示什么字段或设置不显示什么字段 如 money:false 代表不显示money字段
+				// 对应的sql:
+				// select * from vk-test where _id = "5f3a125b3d11c6000106d338"
+			  // 业务逻辑结束-----------------------------------------------------------
+			  return res;
+		}
 };
 
 module.exports = cloudObject;

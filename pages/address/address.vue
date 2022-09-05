@@ -1,28 +1,32 @@
 <template>
-	<view>
-		<view class="item" v-for="(res, index) in siteList" :key="res.id">
+	
+	<view v-if="userAddress[0]">
+		<view class="item" v-for="(res, index) in userAddress" :key="res.name">
 			<view class="top">
 				<view class="name">{{ res.name }}</view>
 				<view class="phone">{{ res.phone }}</view>
-				<view class="tag">
-					<text v-for="(item, index) in res.tag" :key="index" :class="{red:item.tagText=='默认'}">{{ item.tagText }}</text>
-				</view>
 			</view>
 			<view class="bottom">
-				广东省深圳市宝安区 自由路66号
+				{{res.site}}
 				<u-icon name="edit-pen" @click="update" :size="40" color="#999999"></u-icon>
 			</view>
 		</view>
-		<view class="addSite" @tap="add">
+	</view>
+	
+	<view class="u-text-center center-line"  v-else>
+		暂无地址
+	</view>
+	
+		<view class="addSite" @tap="toAddSite">
 			<view class="add">
 				<u-icon name="plus" color="#ffffff" class="icon" :size="30"></u-icon>新建收货地址
 			</view>
 		</view>
-	</view>
 </template>
 
 <script>
-const addressObject = vk.importObject("client/address"); // 这段代码可以写在外层顶部，也可以直接写在对应函数内部。
+	var vk = uni.vk;
+	const addressObject = vk.importObject("client/address"); // 这段代码可以写在外层顶部，也可以直接写在对应函数内部。
 export default {
 	data() {
 		return {
@@ -31,13 +35,47 @@ export default {
 			encryptedKey:"",
 			image:"",
 			data:{},
-			userInfo:[]
+			userInfo:[],
+			userAddress:[]
 		};
 	},
-	onLoad() {
-		this.getData();
+	onLaunch() {
+		vk = uni.vk;
+		this.init();
+	},
+	onReady() {
+		
+	},
+	async onLoad() {
+		let rev = await this.load()
+		await this.setAdd(rev.address)
 	},
 	methods: {
+		setAdd(rev){
+			this.userAddress = rev;
+		},
+		async	load(){
+				let res = await addressObject.findById({
+					data:{
+						 userInfo : vk.getVuex('$user.userInfo')
+					}
+				})
+				return res.item
+			}
+		},
+		init(){
+				let that = this;
+				// #ifdef MP-WEIXIN
+				vk.userCenter.code2SessionWeixin({
+					data:{
+						needCache:true
+					},
+					success: (data) => {
+						that.encryptedKey = data.encryptedKey;
+					},
+				});
+				// #endif
+			},
 		async add(){
 			await addressObject.add({
 				title:'请求中',
@@ -54,47 +92,11 @@ export default {
 				}
 			})
 		},
-		getData() {
-			this.siteList = [
-				{
-					id: 1,
-					name: '游X',
-					phone: '183****5523',
-					tag: [
-						{
-							tagText: '默认'
-						},
-						{
-							tagText: '家'
-						}
-					],
-					site: '广东省深圳市宝安区 自由路66号'
-				},
-				{
-					id: 2,
-					name: '李XX',
-					phone: '183****5555',
-					tag: [
-						{
-							tagText: '公司'
-						}
-					],
-					site: '广东省深圳市宝安区 翻身路xx号'
-				},
-				{
-					id: 3,
-					name: '王YY',
-					phone: '153****5555',
-					tag: [],
-					site: '广东省深圳市宝安区 平安路13号'
-				}
-			];
-		},
+		
 		toAddSite(){
 			vk.navigateTo({
 				url:'/pages/address/addSite',
 			})
-		}
 	}
 };
 </script>
