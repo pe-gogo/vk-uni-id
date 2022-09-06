@@ -61,8 +61,7 @@ export default {
 					}
 				})
 				return res.item
-			}
-		},
+			},
 		init(){
 				let that = this;
 				// #ifdef MP-WEIXIN
@@ -97,6 +96,7 @@ export default {
 			vk.navigateTo({
 				url:'/pages/address/addSite',
 			})
+			}
 	}
 };
 </script>

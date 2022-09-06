@@ -35,39 +35,39 @@ const _sfc_main = {
         }
       });
       return res.item;
+    },
+    init() {
+      let that = this;
+      vk.userCenter.code2SessionWeixin({
+        data: {
+          needCache: true
+        },
+        success: (data) => {
+          that.encryptedKey = data.encryptedKey;
+        }
+      });
+    },
+    async add() {
+      await addressObject.add({
+        title: "\u8BF7\u6C42\u4E2D",
+        data: {
+          data: this.data
+        }
+      });
+    },
+    async update() {
+      await addressObject.update({
+        title: "\u8BF7\u6C42\u4E2D",
+        data: {
+          data: this.data
+        }
+      });
+    },
+    toAddSite() {
+      vk.navigateTo({
+        url: "/pages/address/addSite"
+      });
     }
-  },
-  init() {
-    let that = this;
-    vk.userCenter.code2SessionWeixin({
-      data: {
-        needCache: true
-      },
-      success: (data) => {
-        that.encryptedKey = data.encryptedKey;
-      }
-    });
-  },
-  async add() {
-    await addressObject.add({
-      title: "\u8BF7\u6C42\u4E2D",
-      data: {
-        data: this.data
-      }
-    });
-  },
-  async update() {
-    await addressObject.update({
-      title: "\u8BF7\u6C42\u4E2D",
-      data: {
-        data: this.data
-      }
-    });
-  },
-  toAddSite() {
-    vk.navigateTo({
-      url: "/pages/address/addSite"
-    });
   }
 };
 if (!Array) {
@@ -91,7 +91,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         e: res.name
       };
     }),
-    c: common_vendor.o(_ctx.update),
+    c: common_vendor.o($options.update),
     d: common_vendor.p({
       name: "edit-pen",
       size: 40,
@@ -103,7 +103,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       color: "#ffffff",
       size: 30
     }),
-    f: common_vendor.o((...args) => _ctx.toAddSite && _ctx.toAddSite(...args))
+    f: common_vendor.o((...args) => $options.toAddSite && $options.toAddSite(...args))
   });
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-db675620"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages/address/address.vue"]]);

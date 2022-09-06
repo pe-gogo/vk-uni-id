@@ -29,9 +29,9 @@ var $app$1 = {
   mutations: {},
   actions: {}
 };
-var __glob_1_0 = /* @__PURE__ */ Object.freeze({
+var __glob_1_1 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": $app$1
 });
-exports.__glob_1_0 = __glob_1_0;
+exports.__glob_1_1 = __glob_1_1;

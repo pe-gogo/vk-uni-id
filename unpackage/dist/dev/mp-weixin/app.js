@@ -7,6 +7,7 @@ var store_index = require("./store/index.js");
 var uni_modules_vkUviewUi_index = require("./uni_modules/vk-uview-ui/index.js");
 var uni_modules_vkUnicloud_vk_modules_vkUnicloudPage_index = require("./uni_modules/vk-unicloud/vk_modules/vk-unicloud-page/index.js");
 require("./common/function/myPubFunction.js");
+require("./store/modules/_address.js");
 require("./store/modules/_app.js");
 require("./store/modules/_user.js");
 require("./uni_modules/vk-uview-ui/libs/mixin/mixin.js");
