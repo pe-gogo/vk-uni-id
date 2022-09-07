@@ -386,11 +386,12 @@
   color: #999999;
 }
 .addSite.data-v-db675620 {
+  margin-top: 100rpx;
   display: flex;
   justify-content: space-around;
   width: 600rpx;
   line-height: 100rpx;
-  position: absolute;
+  position: relative;
   bottom: 30rpx;
   left: 80rpx;
   background-color: red;

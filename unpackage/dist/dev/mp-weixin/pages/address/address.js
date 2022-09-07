@@ -19,6 +19,11 @@ const _sfc_main = {
     vk = common_vendor.index.vk;
     this.init();
   },
+  onShow() {
+    if (this.userAddress[0]) {
+      this.load();
+    }
+  },
   onReady() {
   },
   async onLoad() {
@@ -48,6 +53,9 @@ const _sfc_main = {
         }
       });
     },
+    deleteAdd(index) {
+      this.userAddress.splice(index, 1);
+    },
     toAddSite() {
       vk.navigateTo({
         url: "/pages/address/addSite"
@@ -73,7 +81,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: common_vendor.t(res.phone),
         c: common_vendor.t(res.site),
         d: "db675620-0-" + i0,
-        e: res.name
+        e: "db675620-1-" + i0,
+        f: res.name
       };
     }),
     c: common_vendor.o(_ctx.update),
@@ -81,14 +90,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "edit-pen",
       size: 40,
       color: "#999999"
+    }),
+    e: common_vendor.o($options.deleteAdd),
+    f: common_vendor.p({
+      name: "close",
+      size: 40,
+      color: "#999999"
     })
   } : {}, {
-    e: common_vendor.p({
+    g: common_vendor.p({
       name: "plus",
       color: "#ffffff",
       size: 30
     }),
-    f: common_vendor.o((...args) => $options.toAddSite && $options.toAddSite(...args))
+    h: common_vendor.o((...args) => $options.toAddSite && $options.toAddSite(...args))
   });
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-db675620"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages/address/address.vue"]]);

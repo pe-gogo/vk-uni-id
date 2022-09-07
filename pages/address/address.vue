@@ -8,7 +8,10 @@
 			</view>
 			<view class="bottom">
 				{{res.site}}
-				<u-icon name="edit-pen" @click="update" :size="40" color="#999999"></u-icon>
+				<view>
+					<u-icon name="edit-pen" @click="update" :size="40" color="#999999"></u-icon>
+					<u-icon name="close" @click="deleteAdd" :size="40" color="#999999"></u-icon>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -40,6 +43,11 @@ export default {
 	onLaunch() {
 		vk = uni.vk;
 		this.init();
+	},
+	onShow() {
+		if(this.userAddress[0]){
+			this.load()
+		}
 	},
 	onReady() {
 		
@@ -73,6 +81,9 @@ export default {
 					},
 				});
 				// #endif
+			},
+			deleteAdd(index){
+				this.userAddress.splice(index,1)
 			},
 
 		// async update(){
@@ -133,11 +144,12 @@ export default {
 	}
 }
 .addSite {
+	margin-top: 100rpx;
 	display: flex;
 	justify-content: space-around;
 	width: 600rpx;
 	line-height: 100rpx;
-	position: absolute;
+	position: relative;
 	bottom: 30rpx;
 	left: 80rpx;
 	background-color: red;

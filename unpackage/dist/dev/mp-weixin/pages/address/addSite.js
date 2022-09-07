@@ -17,18 +17,31 @@ const _sfc_main = {
       userInfo: [],
       form: {
         name: "",
-        number: "",
-        province: "",
+        phone: "",
         site: ""
-      }
+      },
+      address: []
     };
   },
   methods: {
+    async update() {
+      this.address = vk.getVuex("$user.userInfo.address");
+      this.address.push(this.form);
+      await addressObject.update({
+        data: {
+          form: this.address,
+          userInfo: vk.getVuex("$user.userInfo")
+        }
+      });
+      vk.navigateBack();
+    },
     async add() {
+      this.address = vk.getVuex("$user.userInfo.address");
+      this.address.push(form);
       await addressObject.add({
         title: "\u8BF7\u6C42\u4E2D",
         data: {
-          data: this.form
+          data: this.address
         }
       });
     }
@@ -68,34 +81,27 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: common_vendor.p({
       label: "\u59D3\u540D"
     }),
-    d: common_vendor.o(($event) => $data.form.number = $event),
+    d: common_vendor.o(($event) => $data.form.phone = $event),
     e: common_vendor.p({
-      modelValue: $data.form.number
+      modelValue: $data.form.phone
     }),
     f: common_vendor.p({
       label: "\u7535\u8BDD"
     }),
-    g: common_vendor.o(($event) => $data.form.province = $event),
+    g: common_vendor.o(($event) => $data.form.site = $event),
     h: common_vendor.p({
-      modelValue: $data.form.province
-    }),
-    i: common_vendor.p({
-      label: "\u7701\u4EFD"
-    }),
-    j: common_vendor.o(($event) => $data.form.site = $event),
-    k: common_vendor.p({
       modelValue: $data.form.site
     }),
-    l: common_vendor.p({
+    i: common_vendor.p({
       label: "\u5730\u5740"
     }),
-    m: common_vendor.o($options.add),
-    n: common_vendor.p({
+    j: common_vendor.o($options.update),
+    k: common_vendor.p({
       type: "success",
       size: "medium"
     }),
-    o: common_vendor.sr("uForm", "5adf3af8-0"),
-    p: common_vendor.p({
+    l: common_vendor.sr("uForm", "5adf3af8-0"),
+    m: common_vendor.p({
       model: $data.form
     })
   };

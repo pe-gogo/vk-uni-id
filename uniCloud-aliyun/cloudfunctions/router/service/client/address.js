@@ -81,7 +81,7 @@ var cloudObject = {
 					_id:uid
 				},
 				dataJson:{
-					
+					address:data.form
 				}
 			});
 	
@@ -107,7 +107,32 @@ var cloudObject = {
 				// select * from vk-test where _id = "5f3a125b3d11c6000106d338"
 			  // 业务逻辑结束-----------------------------------------------------------
 			  return res;
-		}
+		},
+		/**
+			 * 模板函数
+			 * @url client/address.updateById 前端调用的url参数地址
+			 */
+			updateById: async function(data){
+					let { uid } = this.getClientInfo(); // 获取客户端信息
+					let res = { code : 0, msg : 'ok' };
+				  // 业务逻辑开始----------------------------------------------------------- 
+					res.item = await vk.baseDao.updateById({
+						 dbName: dbName.address,
+						 whereJson:{ // 条件
+								id:	data.userInfo._id
+						  },
+						  dataJson:{ // 需要修改的数据
+						    address: data.form
+						  },
+						getUpdateData:true
+					})
+					
+					// 上面的 fieldJson 可以设置 显示什么字段或设置不显示什么字段 如 money:false 代表不显示money字段
+					// 对应的sql:
+					// select * from vk-test where _id = "5f3a125b3d11c6000106d338"
+				  // 业务逻辑结束-----------------------------------------------------------
+				  return res;
+			},
 };
 
 module.exports = cloudObject;

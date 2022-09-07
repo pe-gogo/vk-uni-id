@@ -1,16 +1,13 @@
 <template>
 	<u-form :model="form" ref="uForm" >
 		<u-form-item label="姓名"><u-input v-model="form.name" /></u-form-item>
-		<u-form-item label="电话"><u-input v-model="form.number" /></u-form-item>
-		<u-form-item label="省份">
-			<u-input v-model="form.province"></u-input>
-		</u-form-item>
+		<u-form-item label="电话"><u-input v-model="form.phone" /></u-form-item>
 		<u-form-item label="地址">
 			<u-input v-model="form.site"></u-input>
 		</u-form-item>
  		<u-form-item style="display: flex;align-items: center;justify-content: center;" >
 			<view class="u-flex" style="display: flex;align-items: center;">
-				<u-button @click="add" type ="success" size="medium">提交</u-button>
+				<u-button @click="update" type ="success" size="medium">提交</u-button>
 			</view>
 		</u-form-item>
 	</u-form>
@@ -35,19 +32,34 @@ export default {
 			userInfo:[],
 			form: {
 				name: '',
-				number: '',
-				province: '',
+				phone: '',
 				site:''
 			},
+			address: []
 		};
 	},
 
 	methods: {
+	async update(){
+		this.address =  vk.getVuex('$user.userInfo.address')
+		this.address.push(this.form)
+		await addressObject.update({
+			data:{
+				form:this.address,
+				userInfo : vk.getVuex('$user.userInfo')
+			}
+		})
+		vk.navigateBack();
+	}
+	,
 	async add(){
+		this.address =  vk.getVuex('$user.userInfo.address')
+		this.address.push(form)
+		
 		await addressObject.add({
 			title:'请求中',
 			data:{
-				data: this.form
+				data: this.address
 			}
 		})
 	},
