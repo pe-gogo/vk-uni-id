@@ -1,7 +1,7 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
 var vk = common_vendor.index.vk;
-vk.importObject("client/address");
+const addressObject = vk.importObject("client/address");
 const _sfc_main = {
   onLaunch() {
     vk = common_vendor.index.vk;
@@ -23,7 +23,27 @@ const _sfc_main = {
       }
     };
   },
-  methods: {}
+  methods: {
+    async add() {
+      await addressObject.add({
+        title: "\u8BF7\u6C42\u4E2D",
+        data: {
+          data: this.form
+        }
+      });
+    }
+  },
+  init() {
+    let that = this;
+    vk.userCenter.code2SessionWeixin({
+      data: {
+        needCache: true
+      },
+      success: (data) => {
+        that.encryptedKey = data.encryptedKey;
+      }
+    });
+  }
 };
 if (!Array) {
   const _easycom_u_input2 = common_vendor.resolveComponent("u-input");
@@ -69,12 +89,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     l: common_vendor.p({
       label: "\u5730\u5740"
     }),
-    m: common_vendor.p({
+    m: common_vendor.o($options.add),
+    n: common_vendor.p({
       type: "success",
       size: "medium"
     }),
-    n: common_vendor.sr("uForm", "5adf3af8-0"),
-    o: common_vendor.p({
+    o: common_vendor.sr("uForm", "5adf3af8-0"),
+    p: common_vendor.p({
       model: $data.form
     })
   };

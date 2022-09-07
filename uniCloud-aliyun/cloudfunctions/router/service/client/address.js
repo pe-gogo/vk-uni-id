@@ -61,21 +61,7 @@ var cloudObject = {
 		await vk.daoCenter.addressDao.add({
 				_id: data.uid,
 				address:[
-					{
-							name: '游X',
-							phone: '183****5523',
-							site: '广东省深圳市宝安区 自由路66号'
-						},
-						{
-							name: '李XX',
-							phone: '183****5555',
-							site: '广东省深圳市宝安区 翻身路xx号'
-						},
-						{
-							name: '王YY',
-							phone: '153****5555',
-							site: '广东省深圳市宝安区 平安路13号'
-						}
+					
 					]
 			});
 		// 业务逻辑结束-----------------------------------------------------------

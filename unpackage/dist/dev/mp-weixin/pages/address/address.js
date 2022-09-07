@@ -11,7 +11,8 @@ const _sfc_main = {
       image: "",
       data: {},
       userInfo: [],
-      userAddress: []
+      userAddress: [],
+      show: false
     };
   },
   onLaunch() {
@@ -21,20 +22,20 @@ const _sfc_main = {
   onReady() {
   },
   async onLoad() {
-    let rev = await this.load();
-    await this.setAdd(rev.address);
+    this.load();
   },
   methods: {
-    setAdd(rev) {
-      this.userAddress = rev;
-    },
     async load() {
       let res = await addressObject.findById({
         data: {
           userInfo: vk.getVuex("$user.userInfo")
         }
       });
-      return res.item;
+      if (res.item.address[0]) {
+        vk.setVuex("$user.userInfo.address", res.item.address);
+        this.userAddress = vk.getVuex("$user.userInfo.address");
+        this.show = true;
+      }
     },
     init() {
       let that = this;
@@ -44,22 +45,6 @@ const _sfc_main = {
         },
         success: (data) => {
           that.encryptedKey = data.encryptedKey;
-        }
-      });
-    },
-    async add() {
-      await addressObject.add({
-        title: "\u8BF7\u6C42\u4E2D",
-        data: {
-          data: this.data
-        }
-      });
-    },
-    async update() {
-      await addressObject.update({
-        title: "\u8BF7\u6C42\u4E2D",
-        data: {
-          data: this.data
         }
       });
     },
@@ -80,8 +65,8 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: $data.userAddress[0]
-  }, $data.userAddress[0] ? {
+    a: $data.show
+  }, $data.show ? {
     b: common_vendor.f($data.userAddress, (res, index, i0) => {
       return {
         a: common_vendor.t(res.name),
@@ -91,7 +76,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         e: res.name
       };
     }),
-    c: common_vendor.o($options.update),
+    c: common_vendor.o(_ctx.update),
     d: common_vendor.p({
       name: "edit-pen",
       size: 40,

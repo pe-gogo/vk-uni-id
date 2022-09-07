@@ -1,6 +1,6 @@
 <template>
 	
-	<view v-if="userAddress[0]">
+	<view v-if="show">
 		<view class="item" v-for="(res, index) in userAddress" :key="res.name">
 			<view class="top">
 				<view class="name">{{ res.name }}</view>
@@ -13,9 +13,6 @@
 		</view>
 	</view>
 	
-	<view class="u-text-center center-line"  v-else>
-		暂无地址
-	</view>
 	
 		<view class="addSite" @tap="toAddSite">
 			<view class="add">
@@ -36,7 +33,8 @@ export default {
 			image:"",
 			data:{},
 			userInfo:[],
-			userAddress:[]
+			userAddress:[],
+			show:false
 		};
 	},
 	onLaunch() {
@@ -47,20 +45,21 @@ export default {
 		
 	},
 	async onLoad() {
-		let rev = await this.load()
-		await this.setAdd(rev.address)
+			this.load()
 	},
 	methods: {
-		setAdd(rev){
-			this.userAddress = rev;
-		},
 		async	load(){
+			var that = this
 				let res = await addressObject.findById({
 					data:{
 						 userInfo : vk.getVuex('$user.userInfo')
-					}
+					},
 				})
-				return res.item
+				if(res.item.address[0]){
+					vk.setVuex('$user.userInfo.address',res.item.address)
+					this.userAddress =  vk.getVuex('$user.userInfo.address')
+					this.show = true
+				}
 			},
 		init(){
 				let that = this;
@@ -75,22 +74,15 @@ export default {
 				});
 				// #endif
 			},
-		async add(){
-			await addressObject.add({
-				title:'请求中',
-				data:{
-					data: this.data
-				}
-			})
-		},
-		async update(){
-			await addressObject.update({
-				title:'请求中',
-				data:{
-					data: this.data
-				}
-			})
-		},
+
+		// async update(){
+		// 	await addressObject.update({
+		// 		title:'请求中',
+		// 		data:{
+		// 			data: this.data
+		// 		}
+		// 	})
+		// },
 		
 		toAddSite(){
 			vk.navigateTo({
