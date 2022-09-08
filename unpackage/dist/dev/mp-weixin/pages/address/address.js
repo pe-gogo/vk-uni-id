@@ -54,7 +54,17 @@ const _sfc_main = {
       });
     },
     deleteAdd(index) {
-      this.userAddress.splice(index, 1);
+      vk.confirm("\u786E\u5B9A\u8981\u5220\u9664\u5417?", (res) => {
+        if (res.confirm) {
+          this.userAddress.splice(index, 1);
+          addressObject.update({
+            data: {
+              userInfo: vk.getVuex("$user.userInfo"),
+              form: this.userAddress
+            }
+          });
+        }
+      });
     },
     toAddSite() {
       vk.navigateTo({
@@ -81,8 +91,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: common_vendor.t(res.phone),
         c: common_vendor.t(res.site),
         d: "db675620-0-" + i0,
-        e: "db675620-1-" + i0,
-        f: res.name
+        e: common_vendor.o(($event) => $options.deleteAdd(index)),
+        f: "db675620-1-" + i0,
+        g: res.name
       };
     }),
     c: common_vendor.o(_ctx.update),
@@ -91,19 +102,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       size: 40,
       color: "#999999"
     }),
-    e: common_vendor.o($options.deleteAdd),
-    f: common_vendor.p({
+    e: common_vendor.p({
       name: "close",
       size: 40,
       color: "#999999"
     })
   } : {}, {
-    g: common_vendor.p({
+    f: common_vendor.p({
       name: "plus",
       color: "#ffffff",
       size: 30
     }),
-    h: common_vendor.o((...args) => $options.toAddSite && $options.toAddSite(...args))
+    g: common_vendor.o((...args) => $options.toAddSite && $options.toAddSite(...args))
   });
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-db675620"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages/address/address.vue"]]);

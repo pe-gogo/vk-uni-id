@@ -10,7 +10,7 @@
 				{{res.site}}
 				<view>
 					<u-icon name="edit-pen" @click="update" :size="40" color="#999999"></u-icon>
-					<u-icon name="close" @click="deleteAdd" :size="40" color="#999999"></u-icon>
+					<u-icon name="close" @click="deleteAdd(index)" :size="40" color="#999999"></u-icon>
 				</view>
 			</view>
 		</view>
@@ -83,7 +83,20 @@ export default {
 				// #endif
 			},
 			deleteAdd(index){
-				this.userAddress.splice(index,1)
+				// 简写
+				vk.confirm("确定要删除吗?", (res) => {
+				  if (res.confirm) {
+				    // 点击确定按钮后的回调
+				    this.userAddress.splice(index,1)
+				    addressObject.update({
+				    	data:{
+				    		userInfo : vk.getVuex('$user.userInfo'),
+				    		form:this.userAddress
+				    	}
+				    })
+				  }
+				});
+
 			},
 
 		// async update(){

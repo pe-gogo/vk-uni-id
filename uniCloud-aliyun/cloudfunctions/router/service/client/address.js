@@ -119,7 +119,7 @@ var cloudObject = {
 					res.item = await vk.baseDao.updateById({
 						 dbName: dbName.address,
 						 whereJson:{ // 条件
-								id:	data.userInfo._id
+								id:	uid
 						  },
 						  dataJson:{ // 需要修改的数据
 						    address: data.form
