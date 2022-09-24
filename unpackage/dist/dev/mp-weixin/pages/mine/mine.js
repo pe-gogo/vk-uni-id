@@ -44,5 +44,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dcbcfe34"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages/mine/mine.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dcbcfe34"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages/mine/mine.vue"]]);
 wx.createPage(MiniProgramPage);

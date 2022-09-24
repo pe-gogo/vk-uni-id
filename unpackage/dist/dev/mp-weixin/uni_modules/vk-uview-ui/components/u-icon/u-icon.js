@@ -213,5 +213,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     x: common_vendor.n("u-icon--" + $props.labelPos)
   });
 }
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-4cd0916b"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-icon/u-icon.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-4cd0916b"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-icon/u-icon.vue"]]);
 wx.createComponent(Component);

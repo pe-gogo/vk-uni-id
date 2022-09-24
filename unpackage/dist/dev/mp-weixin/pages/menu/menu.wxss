@@ -1,0 +1,1007 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.container {
+	overflow: hidden;
+	position: relative;
+}
+.loading {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+image {
+		width: 260rpx;
+		height: 260rpx;
+		position: relative;
+		margin-top: -200rpx;
+}
+}
+.stores {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-bottom: -40rpx;
+.store {
+		width: 100%;
+		background-color: $bg-color-grey;
+		padding: 20rpx;
+		display: flex;
+		align-items: center;
+		margin-bottom: 20rpx;
+		border-radius: 6rpx;
+.iconfont {
+			font-size: 50rpx;
+			margin-right: 15rpx;
+&.iconradio-button-off {
+				color: $text-color-assist;
+}
+&.iconradio-button-on {
+				color: $color-primary;
+}
+}
+.infos {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			color: $text-color-base;
+			overflow: hidden;
+.name_and_distance {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 10rpx;
+				overflow: hidden;
+.name {
+					flex: 1;
+					flex-shrink: 0;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					font-size: $font-size-lg;
+}
+.distance {
+					flex-shrink: 0;
+					font-size: $font-size-lg;
+					font-weight: bold;
+					margin-left: 20rpx;
+}
+}
+.street {
+				color: $text-color-assist;
+				font-size: $font-size-sm;
+}
+}
+}
+}
+.main {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.nav {
+	width: 100%;
+	height: 212rpx;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+.header {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20rpx;
+		background-color: #ffffff;
+		height: 140rpx;
+.left {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+.store-name {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				font-size: $font-size-lg;
+				margin-bottom: 10rpx;
+.iconfont {
+					margin-left: 10rpx;
+					line-height: 100%;
+}
+}
+.store-location {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				color: $text-color-assist;
+				font-size: $font-size-sm;
+.iconfont {
+					vertical-align: middle;
+					display: table-cell;
+					color: $color-primary;
+					line-height: 100%;
+}
+}
+}
+.right {
+			background-color: $bg-color-grey;
+			border-radius: 38rpx;
+			display: flex;
+			align-items: center;
+			font-size: $font-size-sm;
+			padding: 0 38rpx;
+			color: $text-color-assist;
+.dinein, .takeout {
+				position: relative;
+				display: flex;
+				align-items: center;
+&.active {
+					padding: 14rpx 38rpx;
+					color: #ffffff;
+					background-color: $color-primary;
+					border-radius: 38rpx;
+}
+}
+.takeout {
+				margin-left: 20rpx;
+				height: 100%;
+				flex: 1;
+				padding: 14rpx 0;
+}
+.dinein.active {
+				margin-left: -38rpx;
+}
+.takeout.active {
+				margin-right: -38rpx;
+}
+}
+}
+.coupon {
+		flex: 1;
+		width: 100%;
+		background-color: $bg-color-primary;
+		font-size: $font-size-base;
+		color: $color-primary;
+		padding: 0 20rpx;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+.title {
+			flex: 1;
+			margin-left: 10rpx;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+}
+.iconfont {
+			line-height: 100%;
+}
+}
+}
+.content {
+	flex: 1;
+	overflow: hidden;
+	width: 100%;
+	display: flex;
+.menus {
+		width: 200rpx;
+		height: 100%;
+		overflow: hidden;
+		background-color: $bg-color-grey;
+.wrapper {
+			width: 100%;
+			height: 100%;
+.menu {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				padding: 30rpx 20rpx;
+				font-size: 26rpx;
+				color: $text-color-assist;
+				position: relative;
+&:nth-last-child(1) {
+					margin-bottom: 130rpx;
+}
+&.current {
+					background-color: #ffffff;
+					color: $text-color-base;
+}
+.dot {
+					position: absolute;
+					width: 34rpx;
+					height: 34rpx;
+					line-height: 34rpx;
+					font-size: 22rpx;
+					background-color: $color-primary;
+					color: #ffffff;
+					top: 16rpx;
+					right: 10rpx;
+					border-radius: 100%;
+					text-align: center;
+}
+}
+}
+}
+.goods {
+		flex: 1;
+		height: 100%;
+		overflow: hidden;
+		background-color: #ffffff;
+.wrapper {
+			width: 100%;
+			height: 100%;
+			padding: 20rpx;
+.ads {
+				height: calc(300 / 550 * 510rpx);
+image {
+					width: 100%;
+					height: 100%;
+					border-radius: 8rpx;
+}
+}
+.list {
+				width: 100%;
+				font-size: $font-size-base;
+				padding-bottom: 130rpx;
+.category {
+					width: 100%;
+.title {
+						padding: 30rpx 0;
+						display: flex;
+						align-items: center;
+						color: $text-color-base;
+.icon {
+							width: 38rpx;
+							height: 38rpx;
+							margin-left: 10rpx;
+}
+}
+}
+.items {
+					display: flex;
+					flex-direction: column;
+					padding-bottom: -30rpx;
+.good {
+						display: flex;
+						align-items: center;
+						margin-bottom: 30rpx;
+.image {
+							width: 160rpx;
+							height: 160rpx;
+							margin-right: 20rpx;
+							border-radius: 8rpx;
+}
+.right {
+							flex: 1;
+							height: 160rpx;
+							overflow: hidden;
+							display: flex;
+							flex-direction: column;
+							align-items: flex-start;
+							justify-content: space-between;
+							padding-right: 14rpx;
+.name {
+								font-size: $font-size-base;
+								margin-bottom: 10rpx;
+}
+.tips {
+								width: 100%;
+								height: 40rpx;
+								line-height: 40rpx;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+								font-size: $font-size-sm;
+								color: $text-color-assist;
+								margin-bottom: 10rpx;
+}
+.price_and_action {
+								width: 100%;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+.price {
+									font-size: $font-size-base;
+									font-weight: 600;
+}
+.btn-group {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									position: relative;
+.btn {
+										padding: 0 20rpx;
+										box-sizing: border-box;
+										font-size: $font-size-sm;
+										height: 44rpx;
+										line-height: 44rpx;
+&.property_btn {
+											border-radius: 24rpx;
+}
+&.add_btn,
+										&.reduce_btn {
+											padding: 0;
+											width: 44rpx;
+											border-radius: 44rpx;
+}
+}
+.dot {
+										position: absolute;
+										background-color: #ffffff;
+										border: 1px solid $color-primary;
+										color: $color-primary;
+										font-size: $font-size-sm;
+										width: 36rpx;
+										height: 36rpx;
+										line-height: 36rpx;
+										text-align: center;
+										border-radius: 100%;
+										right: -12rpx;
+										top: -10rpx;
+}
+.number {
+										width: 44rpx;
+										height: 44rpx;
+										line-height: 44rpx;
+										text-align: center;
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+.modal-box {
+	max-height: 90vh;
+}
+.good-detail-modal {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+.cover {
+		height: 320rpx;
+		padding: 30rpx 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+.image {
+			width: 260rpx;
+			height: 260rpx;
+}
+.btn-group {
+			position: absolute;
+			right: 10rpx;
+			top: 30rpx;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+image {
+				width: 80rpx;
+				height: 80rpx;
+}
+}
+}
+.detail {
+		width: 100%;
+		min-height: 1vh;
+		max-height: calc(90vh - 320rpx - 80rpx - 120rpx);
+.wrapper {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+.basic {
+				padding: 0 20rpx 30rpx;
+				display: flex;
+				flex-direction: column;
+.name {
+					font-size: $font-size-base;
+					color: $text-color-base;
+					margin-bottom: 10rpx;
+}
+.tips {
+					font-size: $font-size-sm;
+					color: $text-color-grey;
+}
+}
+.properties {
+				width: 100%;
+				border-top: 2rpx solid $bg-color-grey;
+				padding: 10rpx 30rpx 0;
+				display: flex;
+				flex-direction: column;
+.property {
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					margin-bottom: 30rpx;
+					padding-bottom: -16rpx;
+.title {
+						width: 100%;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						margin-bottom: 20rpx;
+.name {
+							font-size: 26rpx;
+							color: $text-color-base;
+							margin-right: 20rpx;
+}
+.desc {
+							flex: 1;
+							font-size: $font-size-sm;
+							color: $color-primary;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+}
+}
+.values {
+						width: 100%;
+						display: flex;
+						flex-wrap: wrap;
+.value {
+							border-radius: 8rpx;
+							background-color: $bg-color-grey;
+							padding: 16rpx 30rpx;
+							font-size: 26rpx;
+							color: $text-color-assist;
+							margin-right: 16rpx;
+							margin-bottom: 16rpx;
+&.default {
+								background-color: $color-primary;
+								color: $text-color-white;
+}
+}
+}
+}
+}
+}
+}
+.action {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: $bg-color-grey;
+		height: 120rpx;
+		padding: 0 26rpx;
+.left {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-right: 20rpx;
+			overflow: hidden;
+.price {
+				font-size: $font-size-lg;
+				color: $text-color-base;
+}
+.props {
+				color: $text-color-assist;
+				font-size: 24rpx;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+}
+}
+.btn-group {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+.number {
+				font-size: $font-size-base;
+				width: 44rpx;
+				height: 44rpx;
+				line-height: 44rpx;
+				text-align: center;
+}
+.btn {
+				padding: 0;
+				font-size: $font-size-base;
+				width: 44rpx;
+				height: 44rpx;
+				line-height: 44rpx;
+				border-radius: 100%;
+}
+}
+}
+.add-to-cart-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $color-primary;
+		color: $text-color-white;
+		font-size: $font-size-base;
+		height: 80rpx;
+		border-radius: 0 0 12rpx 12rpx;
+}
+}
+.cart-box {
+	position: absolute;
+	bottom: 30rpx;
+	left: 30rpx;
+	right: 30rpx;
+	height: 96rpx;
+	border-radius: 48rpx;
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2);
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 9999;
+.cart-img {
+		width: 96rpx;
+		height: 96rpx;
+		position: relative;
+		margin-top: -48rpx;
+}
+.pay-btn {
+		height: 100%;
+		padding: 0 30rpx;
+		color: #FFFFFF;
+		border-radius: 0 50rpx 50rpx 0;
+		display: flex;
+		align-items: center;
+		font-size: $font-size-base;
+}
+.mark {
+		padding-left: 46rpx;
+		margin-right: 30rpx;
+		position: relative;
+.tag {
+			background-color: $color-warning;
+			color: $text-color-white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: $font-size-sm;
+			position: absolute;
+			right: -10rpx;
+			top: -50rpx;
+			border-radius: 100%;
+			padding: 4rpx;
+			width: 40rpx;
+			height: 40rpx;
+			opacity: .9;
+}
+}
+.price {
+		flex: 1;
+		color: $text-color-base;
+}
+}
+.cart-popup {
+.top {
+		background-color: $bg-color-primary;
+		color: $color-primary;
+		padding: 10rpx 30rpx;
+		font-size: 24rpx;
+		text-align: right;
+}
+.cart-list {
+		background-color: #FFFFFF;
+		width: 100%;
+		overflow: hidden;
+		min-height: 1vh;
+		max-height: 60vh;
+.wrapper {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			padding: 0 30rpx;
+			margin-bottom: 156rpx;
+.item {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 30rpx 0;
+				position: relative;
+&::after {
+					content: ' ';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					background-color: $border-color;
+					height: 2rpx;
+					transform: scaleY(.6);
+}
+.left {
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+					overflow: hidden;
+					margin-right: 30rpx;
+.name {
+						font-size: $font-size-sm;
+						color: $text-color-base;
+}
+.props {
+						color: $text-color-assist;
+						font-size: 24rpx;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+}
+}
+.center {
+					margin-right: 120rpx;
+					font-size: $font-size-base;
+}
+.right {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+.btn {
+						width: 46rpx;
+						height: 46rpx;
+						border-radius: 100%;
+						padding: 0;
+						text-align: center;
+						line-height: 46rpx;
+}
+.number {
+						font-size: $font-size-base;
+						width: 46rpx;
+						height: 46rpx;
+						text-align: center;
+						line-height: 46rpx;
+}
+}
+}
+}
+}
+}
+@font-face {
+  font-family: "iconfont";
+  src: url("//at.alicdn.com/t/font_1789197_z1gzlwq7idq.ttf?t=1589441233693") format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.iconshoucang:before {
+  content: "\e667";
+}
+.iconshoucangfill:before {
+  content: "\e6c9";
+}
+.iconjifen:before {
+  content: "\e642";
+}
+.iconradio-button-off:before {
+  content: "\e688";
+}
+.iconradio-button-on:before {
+  content: "\e689";
+}
+.iconhelp:before {
+  content: "\e752";
+}
+.iconwxpay:before {
+  content: "\e611";
+}
+.iconbalance:before {
+  content: "\e619";
+}
+.iconadd-select:before {
+  content: "\e7b0";
+}
+.iconsami-select:before {
+  content: "\e7b1";
+}
+.iconmap:before {
+  content: "\e758";
+}
+.iconsuccess:before {
+  content: "\e767";
+}
+.iconsuccess-fill:before {
+  content: "\e78d";
+}
+.iconiconset0136:before {
+  content: "\e623";
+}
+.iconzan:before {
+  content: "\e640";
+}
+.iconjifenqiandao:before {
+  content: "\e6a6";
+}
+.iconshouyeshouye:before {
+  content: "\e606";
+}
+.icondaohang:before {
+  content: "\e641";
+}
+.iconwodelianxikefu:before {
+  content: "\e671";
+}
+.iconwodexinyuan:before {
+  content: "\e675";
+}
+.iconphone:before {
+  content: "\e6dd";
+}
+.icondingdan:before {
+  content: "\e645";
+}
+.iconliwu:before {
+  content: "\e61c";
+}
+.iconyinpinyinliao:before {
+  content: "\e60d";
+}
+.iconyinpin:before {
+  content: "\e70b";
+}
+.iconwaimaixinxi:before {
+  content: "\e685";
+}
+.iconico:before {
+  content: "\e646";
+}
+.iconwode:before {
+  content: "\e616";
+}
+.icongengduofuwu:before {
+  content: "\e607";
+}
+.iconqucan:before {
+  content: "\e625";
+}
+.iconyou:before {
+  content: "\e618";
+}
+.iconshouhuodizhi:before {
+  content: "\e666";
+}
+.iconshangcheng:before {
+  content: "\e63b";
+}
+.iconadd:before {
+  content: "\e742";
+}
+.iconarrow-right:before {
+  content: "\e743";
+}
+.iconarrow-lift:before {
+  content: "\e744";
+}
+.iconarrow-up:before {
+  content: "\e745";
+}
+.iconclose:before {
+  content: "\e747";
+}
+.iconleftbutton:before {
+  content: "\e755";
+}
+.iconreduce:before {
+  content: "\e75e";
+}
+.iconseleted:before {
+  content: "\e763";
+}
+.iconRightbutton:before {
+  content: "\e765";
+}
+.iconleftbutton-fill:before {
+  content: "\e782";
+}
+.iconRightbutton-fill:before {
+  content: "\e78a";
+}
+.iconarrow-down:before {
+  content: "\e7b2";
+}
+.iconaixin1:before {
+  content: "\e63c";
+}
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+@font-face {
+  font-family: "iconfont";
+  src: url("//at.alicdn.com/t/font_1789197_z1gzlwq7idq.ttf?t=1589441233693") format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.iconshoucang:before {
+  content: "\e667";
+}
+.iconshoucangfill:before {
+  content: "\e6c9";
+}
+.iconjifen:before {
+  content: "\e642";
+}
+.iconradio-button-off:before {
+  content: "\e688";
+}
+.iconradio-button-on:before {
+  content: "\e689";
+}
+.iconhelp:before {
+  content: "\e752";
+}
+.iconwxpay:before {
+  content: "\e611";
+}
+.iconbalance:before {
+  content: "\e619";
+}
+.iconadd-select:before {
+  content: "\e7b0";
+}
+.iconsami-select:before {
+  content: "\e7b1";
+}
+.iconmap:before {
+  content: "\e758";
+}
+.iconsuccess:before {
+  content: "\e767";
+}
+.iconsuccess-fill:before {
+  content: "\e78d";
+}
+.iconiconset0136:before {
+  content: "\e623";
+}
+.iconzan:before {
+  content: "\e640";
+}
+.iconjifenqiandao:before {
+  content: "\e6a6";
+}
+.iconshouyeshouye:before {
+  content: "\e606";
+}
+.icondaohang:before {
+  content: "\e641";
+}
+.iconwodelianxikefu:before {
+  content: "\e671";
+}
+.iconwodexinyuan:before {
+  content: "\e675";
+}
+.iconphone:before {
+  content: "\e6dd";
+}
+.icondingdan:before {
+  content: "\e645";
+}
+.iconliwu:before {
+  content: "\e61c";
+}
+.iconyinpinyinliao:before {
+  content: "\e60d";
+}
+.iconyinpin:before {
+  content: "\e70b";
+}
+.iconwaimaixinxi:before {
+  content: "\e685";
+}
+.iconico:before {
+  content: "\e646";
+}
+.iconwode:before {
+  content: "\e616";
+}
+.icongengduofuwu:before {
+  content: "\e607";
+}
+.iconqucan:before {
+  content: "\e625";
+}
+.iconyou:before {
+  content: "\e618";
+}
+.iconshouhuodizhi:before {
+  content: "\e666";
+}
+.iconshangcheng:before {
+  content: "\e63b";
+}
+.iconadd:before {
+  content: "\e742";
+}
+.iconarrow-right:before {
+  content: "\e743";
+}
+.iconarrow-lift:before {
+  content: "\e744";
+}
+.iconarrow-up:before {
+  content: "\e745";
+}
+.iconclose:before {
+  content: "\e747";
+}
+.iconleftbutton:before {
+  content: "\e755";
+}
+.iconreduce:before {
+  content: "\e75e";
+}
+.iconseleted:before {
+  content: "\e763";
+}
+.iconRightbutton:before {
+  content: "\e765";
+}
+.iconleftbutton-fill:before {
+  content: "\e782";
+}
+.iconRightbutton-fill:before {
+  content: "\e78a";
+}
+.iconarrow-down:before {
+  content: "\e7b2";
+}
+.iconaixin1:before {
+  content: "\e63c";
+}

@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-search": "../../uni_modules/vk-uview-ui/components/u-search/u-search"
+  }
+}

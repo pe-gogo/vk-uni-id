@@ -30,7 +30,7 @@
             "path" : "pages/mine/mine",
             "style" :                                                                                    
             {
-								"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationStyle": "custom", // 隐藏系统导航栏
                 "enablePullDownRefresh": false
             }
             
@@ -47,7 +47,17 @@
         ,{
             "path" : "pages/menu/menu",
             "style" :                                                                                    
+            {	
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/stores/stores",
+            "style" :                                                                                    
             {
+				"navigationStyle": "custom",
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
@@ -195,6 +205,9 @@
 	"easycom": {
 		"autoscan": true
 	},
+	"requiredPrivateInfos":[
+		"chooseLocation"
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",

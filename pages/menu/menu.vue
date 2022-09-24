@@ -1,28 +1,15 @@
 <template>
-	<view>
+	<view class="container">
+		
 	</view>
 </template>
-
 <script>
-	export default {
-		data() {
-			return {
-				
-			};
-		},
-		
-		methods: {
+	export default{
+		onLoad() {
 			
 		}
-		
-
-		
-
-		
-
 	}
 </script>
-
 <style lang="scss">
-
+	@import url('./menu.scss')
 </style>

@@ -52,5 +52,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o((...args) => $options.unbindAlipay && $options.unbindAlipay(...args))
   };
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-47431b14"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages_template/uni-id/alipay/alipay.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-47431b14"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages_template/uni-id/alipay/alipay.vue"]]);
 wx.createPage(MiniProgramPage);

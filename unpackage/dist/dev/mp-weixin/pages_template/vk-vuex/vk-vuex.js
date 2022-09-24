@@ -84,5 +84,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     k: common_vendor.o((...args) => $options.logout && $options.logout(...args))
   });
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3bbe5a99"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages_template/vk-vuex/vk-vuex.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3bbe5a99"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages_template/vk-vuex/vk-vuex.vue"]]);
 wx.createPage(MiniProgramPage);

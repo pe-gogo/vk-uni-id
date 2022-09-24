@@ -56,7 +56,12 @@ export default {
 			this.load()
 	},
 	methods: {
-		async	load(){
+		async load(){
+			// if(uni.getStorageSync('userAddress')){
+			// 	this.userAddress =  uni.getStorageSync('userAddress')
+			// 	this.show=true;
+			// 	return;
+			// }
 			var that = this
 				let res = await addressObject.findById({
 					data:{
@@ -67,6 +72,7 @@ export default {
 					vk.setVuex('$user.userInfo.address',res.item.address)
 					this.userAddress =  vk.getVuex('$user.userInfo.address')
 					this.show = true
+
 				}
 			},
 		init(){
@@ -81,7 +87,7 @@ export default {
 					},
 				});
 				// #endif
-			},
+		},
 			deleteAdd(index){
 				// 简写
 				vk.confirm("确定要删除吗?", (res) => {

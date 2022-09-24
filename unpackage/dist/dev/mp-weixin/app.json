@@ -6,7 +6,8 @@
     "pages/login/login",
     "pages/mine/mine",
     "pages/address/address",
-    "pages/menu/menu"
+    "pages/menu/menu",
+    "pages/stores/stores"
   ],
   "subPackages": [
     {
@@ -77,6 +78,5 @@
       "desc": "方便自动填写地址"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

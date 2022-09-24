@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="banner">
-			<image src="https://img-shop.qmimg.cn/s23107/2020/04/26/3eb7808bf105262604.jpg" mode="" class="bg"></image>
+			<image class="bg" src="https://himg2.huanqiucdn.cn/attachment2010/2020/0806/21/12/20200806091226875.jpg"></image>
 			<view class="intro">
 				<view class="greet">您好,{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}</view>
 				<view class="note">一杯奶茶，一口软欧包，在奈雪遇见两种美好</view>
@@ -87,7 +87,7 @@
 		},
 		methods: {
 			takeIn(){
-				
+				vk.navigateTo('/pages/stores/stores');
 			},
 			
 			takeout(){

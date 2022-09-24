@@ -1,12 +1,13 @@
 "use strict";
 var store_modules_$address = require("./modules/_address.js");
 var store_modules_$app = require("./modules/_app.js");
+var store_modules_$store = require("./modules/_store.js");
 var store_modules_$user = require("./modules/_user.js");
 var common_vendor = require("../common/vendor.js");
 let notSaveStateKeys = ["$error"];
 const modules = {};
 let lifeData = common_vendor.index.getStorageSync("lifeData") || {};
-const modulesFiles = { "./modules/$address.js": store_modules_$address.__glob_1_0, "./modules/$app.js": store_modules_$app.__glob_1_1, "./modules/$user.js": store_modules_$user.__glob_1_2 };
+const modulesFiles = { "./modules/$address.js": store_modules_$address.__glob_1_0, "./modules/$app.js": store_modules_$app.__glob_1_1, "./modules/$store.js": store_modules_$store.__glob_1_2, "./modules/$user.js": store_modules_$user.__glob_1_3 };
 for (const modulePath in modulesFiles) {
   const moduleName = modulePath.replace(/^\.\/modules\/(.*)\.\w+$/, "$1");
   modules[moduleName] = modulesFiles[modulePath].default;

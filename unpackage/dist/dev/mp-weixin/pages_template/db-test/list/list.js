@@ -138,6 +138,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {});
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a2539316"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages_template/db-test/list/list.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a2539316"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages_template/db-test/list/list.vue"]]);
 _sfc_main.__runtimeHooks = 3;
 wx.createPage(MiniProgramPage);

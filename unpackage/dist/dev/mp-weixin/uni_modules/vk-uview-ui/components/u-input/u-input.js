@@ -303,5 +303,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     Y: common_vendor.o((...args) => $options.inputClick && $options.inputClick(...args))
   });
 }
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-556d7571"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-input/u-input.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-556d7571"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-input/u-input.vue"]]);
 wx.createComponent(Component);

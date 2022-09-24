@@ -65,5 +65,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: common_vendor.t(JSON.stringify($data.data, null, 2))
   };
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1341f5bc"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages_template/openapi/baidu/baidu.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1341f5bc"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages_template/openapi/baidu/baidu.vue"]]);
 wx.createPage(MiniProgramPage);

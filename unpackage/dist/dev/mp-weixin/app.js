@@ -9,6 +9,7 @@ var uni_modules_vkUnicloud_vk_modules_vkUnicloudPage_index = require("./uni_modu
 require("./common/function/myPubFunction.js");
 require("./store/modules/_address.js");
 require("./store/modules/_app.js");
+require("./store/modules/_store.js");
 require("./store/modules/_user.js");
 require("./uni_modules/vk-uview-ui/libs/mixin/mixin.js");
 require("./uni_modules/vk-uview-ui/libs/request/index.js");
@@ -67,6 +68,7 @@ if (!Math) {
   "./pages/mine/mine.js";
   "./pages/address/address.js";
   "./pages/menu/menu.js";
+  "./pages/stores/stores.js";
   "./pages_template/db-test/db-test.js";
   "./pages_template/db-test/list/list.js";
   "./pages_template/uni-id/index/index.js";
@@ -113,7 +115,7 @@ const _sfc_main = {
       console.log("App Hide");
   }
 };
-var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/App.vue"]]);
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   app.use(store_index.store);

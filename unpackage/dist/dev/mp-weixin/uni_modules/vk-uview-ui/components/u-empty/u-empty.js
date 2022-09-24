@@ -101,5 +101,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: $props.marginTop + "rpx"
   } : {});
 }
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3d842a77"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-empty/u-empty.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3d842a77"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-empty/u-empty.vue"]]);
 wx.createComponent(Component);

@@ -98,5 +98,5 @@ const _sfc_main = {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};
 }
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3c9a31ea"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-form/u-form.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3c9a31ea"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-form/u-form.vue"]]);
 wx.createComponent(Component);

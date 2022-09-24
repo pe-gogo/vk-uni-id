@@ -140,5 +140,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     l: common_vendor.o((...args) => $options.logout && $options.logout(...args))
   });
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-7b2791d4"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/pages_template/uni-id/util/util.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-7b2791d4"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages_template/uni-id/util/util.vue"]]);
 wx.createPage(MiniProgramPage);

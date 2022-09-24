@@ -70,5 +70,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     j: $props.inactiveColor
   });
 }
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2ba456a9"], ["__file", "/Users/aotu/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-line-progress/u-line-progress.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2ba456a9"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/uni_modules/vk-uview-ui/components/u-line-progress/u-line-progress.vue"]]);
 wx.createComponent(Component);
