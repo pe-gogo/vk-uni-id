@@ -36,10 +36,15 @@
 									<view class="right" style="width: 50%;">
 										<image class="item-menu-image" :src="item1.icon" mode=""></image>
 									</view>
-									<view class="left">
+									<view class="left"  style="width: 50;">
 										<view class="item-menu-name">{{item1.name}}</view>
 										<view class="item-menu-price">
-											<view class="price">¥     {{item1.price || 0}}</view>
+											<view class="">
+												¥     {{item1.price || 0}}
+												<u-icon name="plus"></u-icon>
+											
+											</view>
+										
 										</view>
 									</view>
 								</view>
@@ -113,6 +118,14 @@
 		
 			}
 	}
+	.yuanx{
+		position: absolute;
+		flex-direction: r;
+		right: 90rpx;
+		margin-bottom: -59rpx;
+		height: 50rpx;
+		width: 50rpx;
+	}
 	.pages-view{
 		background-color: white;
 	}
@@ -136,7 +149,7 @@
 		flex-direction: column;
 		color: #ffffff;
 		// location
-		top: calc(50rpx + var(--status-bar-height));
+		top: calc(150rpx + var(--status-bar-height));
 		left: 40rpx;
 		.greet{
 			color: #D9C3C3;
@@ -204,14 +217,12 @@
 		color: $u-main-color;
 	}
 	.item-menu-price{
-		
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		font-size: 24rpx;
 		flex-direction: row;
-		margin-left: 80rpx;
 		margin-top: 40rpx;
+		margin-left: 80rpx;
+		font-weight: normal;
+		color: $u-main-color;
 	}
 	
 	.item-container {
@@ -246,7 +257,6 @@
 				arr: [],
 				scrollRightTop: 0, // 右边栏目scroll-view的滚动条高度
 				timer: null, // 定时器
-				
 			}
 		},
 		onLoad() {
@@ -361,6 +371,6 @@
 					}
 				}, 10)
 			}
-		}
+		},
 	}
 </script>

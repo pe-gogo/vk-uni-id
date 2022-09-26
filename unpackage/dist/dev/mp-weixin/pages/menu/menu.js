@@ -151,15 +151,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             a: item1.icon,
             b: common_vendor.t(item1.name),
             c: common_vendor.t(item1.price || 0),
-            d: index1
+            d: "368aef34-1-" + i0 + "-" + i1,
+            e: index1
           };
         }),
         c: "item" + index,
         d: index
       };
     }),
-    g: $data.scrollRightTop,
-    h: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
+    g: common_vendor.p({
+      name: "plus"
+    }),
+    h: $data.scrollRightTop,
+    i: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-368aef34"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages/menu/menu.vue"]]);

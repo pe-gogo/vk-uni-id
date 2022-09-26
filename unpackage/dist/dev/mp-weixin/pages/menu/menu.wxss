@@ -395,6 +395,14 @@
 .news .news-bg.data-v-368aef34 {
   display: flex;
 }
+.yuanx.data-v-368aef34 {
+  position: absolute;
+  flex-direction: r;
+  right: 90rpx;
+  margin-bottom: -59rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
 .pages-view.data-v-368aef34 {
   background-color: white;
 }
@@ -415,7 +423,7 @@
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  top: calc(50rpx + var(--status-bar-height));
+  top: calc(150rpx + var(--status-bar-height));
   left: 40rpx;
 }
 .intro .greet.data-v-368aef34 {
@@ -472,13 +480,12 @@
   color: #303133;
 }
 .item-menu-price.data-v-368aef34 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 24rpx;
   flex-direction: row;
-  margin-left: 80rpx;
   margin-top: 40rpx;
+  margin-left: 80rpx;
+  font-weight: normal;
+  color: #303133;
 }
 .item-container.data-v-368aef34 {
   flex-direction: column;

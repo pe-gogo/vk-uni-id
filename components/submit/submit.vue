@@ -2,7 +2,7 @@
 	<view class="navigation">
 		<view class="left">
 			<view class="item">
-				<image style="height: 50rpx;width: 50rpx;" src="@/static/package.jpg"></image>
+				<image style="height: 60rpx;width: 60rpx;" src="@/static/package.jpg"></image>
 				<view class="money">¥   248</view>
 			</view>
 			
@@ -21,11 +21,13 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
+	height: 120rpx;
 	box-shadow: $box-shadow;
 	display: flex;
 	border: solid 2rpx #f2f2f2;
 	background-color: #ffffff;
 	padding: 16rpx 0;
+	align-items: center;
 	.left {
 		display: flex;
 		font-size: 20rpx;
