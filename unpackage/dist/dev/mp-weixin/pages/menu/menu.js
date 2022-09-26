@@ -117,9 +117,21 @@ const _sfc_main = {
     }
   }
 };
+if (!Array) {
+  const _easycom_u_icon2 = common_vendor.resolveComponent("u-icon");
+  _easycom_u_icon2();
+}
+const _easycom_u_icon = () => "../../uni_modules/vk-uview-ui/components/u-icon/u-icon.js";
+if (!Math) {
+  _easycom_u_icon();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.f($data.tabbar, (item, index, i0) => {
+    a: common_vendor.p({
+      name: "star"
+    }),
+    b: common_vendor.t(1.9),
+    c: common_vendor.f($data.tabbar, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: index,
@@ -127,9 +139,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.swichMenu(index), index)
       };
     }),
-    b: $data.scrollTop,
-    c: $data.itemId,
-    d: common_vendor.f($data.tabbar, (item, index, i0) => {
+    d: $data.scrollTop,
+    e: $data.itemId,
+    f: common_vendor.f($data.tabbar, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: common_vendor.f(item.foods, (item1, index1, i1) => {
@@ -144,8 +156,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: index
       };
     }),
-    e: $data.scrollRightTop,
-    f: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
+    g: $data.scrollRightTop,
+    h: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-368aef34"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages/menu/menu.vue"]]);

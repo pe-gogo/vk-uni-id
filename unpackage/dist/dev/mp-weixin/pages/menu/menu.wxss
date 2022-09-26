@@ -358,6 +358,7 @@
   height: 300rpx;
 }
 .u-wrap.data-v-368aef34 {
+  background-color: white;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -378,34 +379,63 @@
   display: flex;
   padding: 30rpx;
   flex-direction: row;
-  margin-bottom: 30rpx;
+  margin: 0 0 30rpx 0;
   border-radius: 19rpx;
   border: solid 1rpx;
   height: 300 rpx;
 }
+.news.data-v-368aef34 {
+  margin: 30rpx;
+  border-radius: 19rpx;
+  border: solid 1rpx;
+  height: 300rpx;
+  overflow: hidden;
+  background-color: #000;
+}
+.news .news-bg.data-v-368aef34 {
+  display: flex;
+}
+.pages-view.data-v-368aef34 {
+  background-color: white;
+}
 .u-tab-item.data-v-368aef34 {
   height: 110rpx;
-  background: white;
+  background: #F8F8F8;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 26rpx;
-  color: #444;
+  color: #a8a6aa;
   font-weight: 400;
   line-height: 1;
+}
+.intro.data-v-368aef34 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  top: calc(50rpx + var(--status-bar-height));
+  left: 40rpx;
+}
+.intro .greet.data-v-368aef34 {
+  color: #D9C3C3;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+.intro .note.data-v-368aef34 {
+  color: #D9C3C3;
+  font-size: 24rpx;
 }
 .u-tab-item-active.data-v-368aef34 {
   position: relative;
   color: #000;
-  font-size: 30rpx;
   font-weight: 600;
   background: #fff;
 }
 .u-tab-item-active.data-v-368aef34::before {
   content: "";
   position: absolute;
-  border-left: 4px solid #2979ff;
   height: 32rpx;
   left: 0;
   top: 39rpx;
@@ -414,13 +444,15 @@
   height: 100%;
 }
 .right-box.data-v-368aef34 {
-  background-color: #fafafa;
-}
-.page-view.data-v-368aef34 {
-  padding: 16rpx;
+  background-color: white;
 }
 .class-item.data-v-368aef34 {
   margin-bottom: 30rpx;
+  background-color: #fff;
+  padding: 16rpx;
+  border-radius: 8rpx;
+}
+.pre-class-item.data-v-368aef34 {
   background-color: #fff;
   padding: 16rpx;
   border-radius: 8rpx;
@@ -449,20 +481,13 @@
   margin-top: 40rpx;
 }
 .item-container.data-v-368aef34 {
-  display: flex;
   flex-direction: column;
-}
-.thumb-box.data-v-368aef34 {
-  width: 33.333333%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 20rpx;
+  margin: 16rpx;
 }
 .item-menu-image.data-v-368aef34 {
   border: solid 1rpx;
   border-radius: 50%;
-  width: 120rpx;
-  height: 120rpx;
+  width: 180rpx;
+  height: 150rpx;
 }

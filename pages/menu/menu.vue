@@ -1,7 +1,16 @@
 <template>
 	<view class="container u-wrap">
-		<view class="store-top"></view>
+		<view class="store-top">
+			<view class="intro">
+				<view class="greet">StoreName</view>
+				<view class="note">
+					<u-icon name="star"></u-icon>
+					距离你  {{1.9}}  km
+				</view>
+			</view>
+		</view>
 		<view class="u-menu-wrap">
+			
 			<scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop"
 			 :scroll-into-view="itemId">
 				<view v-for="(item,index) in tabbar" :key="index" class="u-tab-item" :class="[current == index ? 'u-tab-item-active' : '']"
@@ -10,7 +19,13 @@
 				</view>
 			</scroll-view>
 			<scroll-view :scroll-top="scrollRightTop" scroll-y scroll-with-animation class="right-box" @scroll="rightScroll">
-				<view class="page-view">
+				<view class="pages-view">
+					<view class="news" style="background-color: white;">
+						<view class="news-bg">
+							<image src="../../static/banner.jpeg" style="width: 100%;height: 300rpx;"></image>
+						</view>
+					</view>	
+						
 					<view class="class-item" :id="'item' + index" v-for="(item , index) in tabbar" :key="index">
 						<view class="item-title" style="margin-bottom: 50rpx;">
 							<text>{{item.name}}</text>
@@ -25,7 +40,6 @@
 										<view class="item-menu-name">{{item1.name}}</view>
 										<view class="item-menu-price">
 											<view class="price">¥     {{item1.price || 0}}</view>
-
 										</view>
 									</view>
 								</view>
@@ -44,6 +58,7 @@
 <style lang="scss" scoped>
 	.container{
 		background-color: white;
+	
 		width: 100%;
 		height: 100%;
 	}
@@ -53,6 +68,7 @@
 		height: 300rpx;
 	}
 	.u-wrap {
+		background-color: white;
 		height: calc(100vh);
 		/* #ifdef H5 */
 		height: calc(100vh - var(--window-top));
@@ -78,29 +94,62 @@
 		display: flex;
 		padding: 30rpx;
 		flex-direction: row;
-		margin-bottom: 30rpx;
+		margin: 0 0 30rpx 0;
 		border-radius: 19rpx;
 		border: solid 1rpx;
 		height: 300 rpx;
 	}
-	
+	.news{
+			
+			margin: 30rpx;
+			border-radius: 19rpx;
+			border: solid 1rpx;
+			height: 300rpx;
+			overflow: hidden;
+			background-color: #000;
+			.news-bg{
+				display: flex;
+		
+			}
+	}
+	.pages-view{
+		background-color: white;
+	}
+
 	.u-tab-item {
 		height: 110rpx;
-		background: white;
+		background: #F8F8F8;
 		box-sizing: border-box;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 26rpx;
-		color: #444;
+		color: #a8a6aa;
 		font-weight: 400;
 		line-height: 1;
 	}
-	
+	.intro{
+		// 固定的
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		color: #ffffff;
+		// location
+		top: calc(50rpx + var(--status-bar-height));
+		left: 40rpx;
+		.greet{
+			color: #D9C3C3;
+			font-size: $font-size-lg;
+			margin-bottom: 10rpx;
+		}
+		.note{
+			color: #D9C3C3;
+			font-size: $font-size-sm;
+		}
+	}
 	.u-tab-item-active {
 		position: relative;
 		color: #000;
-		font-size: 30rpx;
 		font-weight: 600;
 		background: #fff;
 	}
@@ -108,7 +157,6 @@
 	.u-tab-item-active::before {
 		content: "";
 		position: absolute;
-		border-left: 4px solid $u-type-primary;
 		height: 32rpx;
 		left: 0;
 		top: 39rpx;
@@ -119,18 +167,23 @@
 	}
 	
 	.right-box {
-		background-color: rgb(250, 250, 250);
+		background-color: white;
 	}
-	
-	.page-view {
-		padding: 16rpx;
-	}
+
 	
 	.class-item {
 		margin-bottom: 30rpx;
 		background-color: #fff;
 		padding: 16rpx;
 		border-radius: 8rpx;
+	}
+	.pre-class-item {
+		background-color: #fff;
+		padding: 16rpx;
+		border-radius: 8rpx;
+		.pre-item{
+		
+		}
 	}
 	
 	.class-item:last-child {
@@ -161,24 +214,16 @@
 	}
 	
 	.item-container {
-		display: flex;
 		flex-direction: column;
-	}
-	
-	.thumb-box {
-		width: 33.333333%;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		margin-top: 20rpx;
+		margin: 16rpx;
 	}
 	
 	.item-menu-image {
 		border: solid 1rpx;
 		border-radius: 50%;
-		width: 120rpx;
-		height: 120rpx;
+		width: 180rpx;
+		height: 150rpx;
 	}
 
 </style>
