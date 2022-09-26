@@ -7468,7 +7468,7 @@ switch (f) {
   default:
     g = f;
 }
-const p = h('{\n    "address": [\n        "127.0.0.1",\n        "192.168.2.201"\n    ],\n    "debugPort": 52146,\n    "initialLaunchType": "local",\n    "servePort": 52147,\n    "skipFiles": [\n        "<node_internals>/**/*.js",\n        "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), m = h('[{"provider":"aliyun","spaceName":"vk-demo","spaceId":"9b263989-3b34-486f-a7ad-68fb4c0c0449","clientSecret":"FsVU9+suIZ0wLYYTia/iBA==","endpoint":"https://api.bspapp.com"}]');
+const p = h('{\n    "address": [\n        "127.0.0.1",\n        "172.20.10.3"\n    ],\n    "debugPort": 54536,\n    "initialLaunchType": "local",\n    "servePort": 54537,\n    "skipFiles": [\n        "<node_internals>/**/*.js",\n        "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), m = h('[{"provider":"aliyun","spaceName":"vk-demo","spaceId":"9b263989-3b34-486f-a7ad-68fb4c0c0449","clientSecret":"FsVU9+suIZ0wLYYTia/iBA==","endpoint":"https://api.bspapp.com"}]');
 let _ = "";
 try {
   _ = "__UNI__6FA9A80";
