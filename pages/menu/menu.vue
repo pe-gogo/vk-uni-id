@@ -51,6 +51,7 @@
 				</view>
 			</scroll-view>
 		</view>
+		<submit></submit>
 	</view>
 </template>
 

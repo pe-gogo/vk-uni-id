@@ -119,11 +119,13 @@ const _sfc_main = {
 };
 if (!Array) {
   const _easycom_u_icon2 = common_vendor.resolveComponent("u-icon");
-  _easycom_u_icon2();
+  const _easycom_submit2 = common_vendor.resolveComponent("submit");
+  (_easycom_u_icon2 + _easycom_submit2)();
 }
 const _easycom_u_icon = () => "../../uni_modules/vk-uview-ui/components/u-icon/u-icon.js";
+const _easycom_submit = () => "../../components/submit/submit.js";
 if (!Math) {
-  _easycom_u_icon();
+  (_easycom_u_icon + _easycom_submit)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
