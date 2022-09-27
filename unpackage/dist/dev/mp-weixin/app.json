@@ -7,7 +7,8 @@
     "pages/mine/mine",
     "pages/address/address",
     "pages/menu/menu",
-    "pages/stores/stores"
+    "pages/stores/stores",
+    "pages/menu/goodDes/goodDes"
   ],
   "subPackages": [
     {

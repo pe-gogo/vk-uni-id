@@ -7013,9 +7013,7 @@ const pages = [
   },
   {
     path: "pages/order/order",
-    style: {
-      navigationBarTitleText: "\u8BA2\u5355"
-    }
+    style: {}
   },
   {
     path: "pages/login/login",
@@ -7049,6 +7047,13 @@ const pages = [
     path: "pages/stores/stores",
     style: {
       navigationStyle: "custom",
+      navigationBarTitleText: "",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/menu/goodDes/goodDes",
+    style: {
       navigationBarTitleText: "",
       enablePullDownRefresh: false
     }

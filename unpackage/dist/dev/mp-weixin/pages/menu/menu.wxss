@@ -347,6 +347,21 @@
 .iconaixin1.data-v-368aef34:before {
   content: "\e63c";
 }
+.btn.data-v-368aef34 {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+.btn.property_btn.data-v-368aef34 {
+  border-radius: 24rpx;
+}
+.btn.add_btn.data-v-368aef34, .btn.reduce_btn.data-v-368aef34 {
+  padding: 0;
+  width: 44rpx;
+  border-radius: 44rpx;
+}
 .container.data-v-368aef34 {
   background-color: white;
   width: 100%;

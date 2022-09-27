@@ -3560,7 +3560,7 @@ input {
   height: 100%;
 }
 page {
-  background-color: #F1F8FA;
+  background-color: #fff;
   height: 100%;
 }
 ::-webkit-scrollbar {

@@ -5,6 +5,7 @@
 			<view class="intro">
 				<view class="greet">StoreName</view>
 				<view class="note">
+				
 					<u-icon name="star"></u-icon>
 					距离你  {{1.9}}  km
 				</view>
@@ -35,7 +36,7 @@
 							<view class="" v-for="(item1, index1) in item.foods" :key="index1">
 								<view class="item-list">
 									<view class="right" style="width: 50%;">
-										<image class="item-menu-image" :src="item1.icon" mode=""></image>
+										<image @tap="toFood" class="item-menu-image" :src="item1.icon" mode=""></image>
 									</view>
 									<view class="left"  style="width: 50;">
 										<view class="item-menu-name">{{item1.name}}</view>
@@ -43,9 +44,7 @@
 											<view class="">
 												¥     {{item1.price || 0}}
 												<u-icon name="plus"></u-icon>
-											
 											</view>
-										
 										</view>
 									</view>
 								</view>
@@ -63,9 +62,30 @@
 
 
 <style lang="scss" scoped>
+	
+		.btn {
+											padding: 0 20rpx;
+											box-sizing: border-box;
+											font-size: $font-size-sm;
+											height: 44rpx;
+											line-height: 44rpx;
+	
+											&.property_btn {
+												border-radius: 24rpx;
+											}
+	
+											&.add_btn,
+											&.reduce_btn {
+												padding: 0;
+												width: 44rpx;
+												border-radius: 44rpx;
+		}
+	}
+	
 	.container{
 		background-color: white;
-		width: 100%;
+		width: 100%; 
+		
 		height: 100%;
 	}
 	.store-top{
@@ -282,6 +302,10 @@
 			wx.hideTabBar()
 		},
 		methods: {
+			
+			toFood(){
+				vk.navigateTo('/pages/menu/goodDes/goodDes');
+			},
 			
 			toHome(){
 				vk.navigateTo('/pages/index/index');

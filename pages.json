@@ -14,7 +14,7 @@
 		{
 			"path": "pages/order/order",
 			"style": {
-				"navigationBarTitleText": "订单"
+				
 			}
 		}
         ,{
@@ -58,6 +58,15 @@
             "style" :                                                                                    
             {
 				"navigationStyle": "custom",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/menu/goodDes/goodDes",
+            "style" :                                                                                    
+            {
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }

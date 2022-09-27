@@ -69,6 +69,7 @@ if (!Math) {
   "./pages/address/address.js";
   "./pages/menu/menu.js";
   "./pages/stores/stores.js";
+  "./pages/menu/goodDes/goodDes.js";
   "./pages_template/db-test/db-test.js";
   "./pages_template/db-test/list/list.js";
   "./pages_template/uni-id/index/index.js";

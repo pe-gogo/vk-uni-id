@@ -29,6 +29,9 @@ const _sfc_main = {
     wx.hideTabBar();
   },
   methods: {
+    toFood() {
+      vk.navigateTo("/pages/menu/goodDes/goodDes");
+    },
     toHome() {
       vk.navigateTo("/pages/index/index");
       wx.showTabBar();
@@ -172,11 +175,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: index
       };
     }),
-    i: common_vendor.p({
+    i: common_vendor.o((...args) => $options.toFood && $options.toFood(...args)),
+    j: common_vendor.p({
       name: "plus"
     }),
-    j: $data.scrollRightTop,
-    k: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
+    k: $data.scrollRightTop,
+    l: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-368aef34"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages/menu/menu.vue"]]);
