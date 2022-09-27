@@ -1,1 +1,1 @@
-<view class="m-grid"><view class="entrance"><view class="item"><u-avatar wx:if="{{a}}" u-i="105a816c-0" bind:__l="__l" u-p="{{a}}"></u-avatar><view class="line-pro" style="width:50%"><u-line-progress wx:if="{{b}}" style="width:50%" u-i="105a816c-1" bind:__l="__l" u-p="{{b}}"></u-line-progress></view></view></view></view>
+<view></view>

@@ -6,7 +6,8 @@
 		:longitude="markers[0].longitude"
 		scale="16"
 		:markers="markers"
-		></map>
+		>
+		<backIcon></backIcon></map>
 		<view class="content">
 			<view >
 				<u-search

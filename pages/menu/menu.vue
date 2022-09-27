@@ -1,6 +1,7 @@
 <template>
 	<view class="container u-wrap">
 		<view class="store-top">
+			<u-icon name="arrow-left" class="back" @click="toHome()"></u-icon>
 			<view class="intro">
 				<view class="greet">StoreName</view>
 				<view class="note">
@@ -64,11 +65,11 @@
 <style lang="scss" scoped>
 	.container{
 		background-color: white;
-	
 		width: 100%;
 		height: 100%;
 	}
 	.store-top{
+		z-index: 1;
 		background-color: #033D3A;
 		width: 100%;
 		height: 300rpx;
@@ -81,6 +82,16 @@
 		/* #endif */
 		display: flex;
 		flex-direction: column;
+	}
+	
+	.back{
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		color: #ffffff;
+		// location
+		top: calc(0rpx + var(--status-bar-height));
+		left: 40rpx;
 	}
 	
 	.u-search-box {
@@ -260,13 +271,23 @@
 			}
 		},
 		onLoad() {
-			
+			wx.hideTabBar()
 		},
 		onReady() {
 			wx.hideTabBar()
 			this.getMenuItemTop()
 		},
+		onShow() {
+			wx.hideTabBar()
+			wx.hideTabBar()
+		},
 		methods: {
+			
+			toHome(){
+				vk.navigateTo('/pages/index/index');
+				wx.showTabBar()
+			},
+			
 			// 点击左边的栏目切换
 			async swichMenu(index) {
 				if(this.arr.length == 0) {

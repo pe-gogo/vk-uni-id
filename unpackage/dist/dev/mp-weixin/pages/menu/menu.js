@@ -18,12 +18,21 @@ const _sfc_main = {
     };
   },
   onLoad() {
+    wx.hideTabBar();
   },
   onReady() {
     wx.hideTabBar();
     this.getMenuItemTop();
   },
+  onShow() {
+    wx.hideTabBar();
+    wx.hideTabBar();
+  },
   methods: {
+    toHome() {
+      vk.navigateTo("/pages/index/index");
+      wx.showTabBar();
+    },
     async swichMenu(index) {
       if (this.arr.length == 0) {
         await this.getMenuItemTop();
@@ -129,11 +138,15 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.p({
+    a: common_vendor.o(($event) => $options.toHome()),
+    b: common_vendor.p({
+      name: "arrow-left"
+    }),
+    c: common_vendor.p({
       name: "star"
     }),
-    b: common_vendor.t(1.9),
-    c: common_vendor.f($data.tabbar, (item, index, i0) => {
+    d: common_vendor.t(1.9),
+    e: common_vendor.f($data.tabbar, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: index,
@@ -141,9 +154,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.swichMenu(index), index)
       };
     }),
-    d: $data.scrollTop,
-    e: $data.itemId,
-    f: common_vendor.f($data.tabbar, (item, index, i0) => {
+    f: $data.scrollTop,
+    g: $data.itemId,
+    h: common_vendor.f($data.tabbar, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: common_vendor.f(item.foods, (item1, index1, i1) => {
@@ -151,7 +164,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             a: item1.icon,
             b: common_vendor.t(item1.name),
             c: common_vendor.t(item1.price || 0),
-            d: "368aef34-1-" + i0 + "-" + i1,
+            d: "368aef34-2-" + i0 + "-" + i1,
             e: index1
           };
         }),
@@ -159,11 +172,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: index
       };
     }),
-    g: common_vendor.p({
+    i: common_vendor.p({
       name: "plus"
     }),
-    h: $data.scrollRightTop,
-    i: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
+    j: $data.scrollRightTop,
+    k: common_vendor.o((...args) => $options.rightScroll && $options.rightScroll(...args))
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-368aef34"], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages/menu/menu.vue"]]);

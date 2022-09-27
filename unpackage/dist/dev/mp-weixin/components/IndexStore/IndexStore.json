@@ -1,7 +1,4 @@
 {
   "component": true,
-  "usingComponents": {
-    "u-avatar": "../../uni_modules/vk-uview-ui/components/u-avatar/u-avatar",
-    "u-line-progress": "../../uni_modules/vk-uview-ui/components/u-line-progress/u-line-progress"
-  }
+  "usingComponents": {}
 }

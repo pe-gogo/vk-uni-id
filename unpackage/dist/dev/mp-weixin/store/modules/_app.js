@@ -26,7 +26,12 @@ var $app$1 = {
     config: __spreadValues({}, app_config.config)
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    toHome() {
+      vk.navigateTo("/pages/index/index");
+      wx.showTabBar();
+    }
+  },
   actions: {}
 };
 var __glob_1_1 = /* @__PURE__ */ Object.freeze({

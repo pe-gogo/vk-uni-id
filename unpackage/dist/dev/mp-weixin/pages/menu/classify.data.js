@@ -12,7 +12,7 @@ var classifyData = [
       {
         "name": "T\u6064",
         "key": "T\u6064",
-        "icon": "../../static/coffer.jpeg",
+        "icon": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-9b263989-3b34-486f-a7ad-68fb4c0c0449/81f0d473-206c-4829-9314-b2086b35282a.jpeg",
         "cat": 10
       },
       {

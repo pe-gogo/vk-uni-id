@@ -53,12 +53,14 @@ const _sfc_main = {
   }
 };
 if (!Array) {
+  const _easycom_backIcon2 = common_vendor.resolveComponent("backIcon");
   const _easycom_u_search2 = common_vendor.resolveComponent("u-search");
-  _easycom_u_search2();
+  (_easycom_backIcon2 + _easycom_u_search2)();
 }
+const _easycom_backIcon = () => "../../components/backIcon/backIcon.js";
 const _easycom_u_search = () => "../../uni_modules/vk-uview-ui/components/u-search/u-search.js";
 if (!Math) {
-  _easycom_u_search();
+  (_easycom_backIcon + _easycom_u_search)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
