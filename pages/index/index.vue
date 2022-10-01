@@ -1,71 +1,27 @@
 <template>
 	<view class="container">
 		<view class="banner">
-			<image class="bg" src="https://himg2.huanqiucdn.cn/attachment2010/2020/0806/21/12/20200806091226875.jpg"></image>
+			<image class="bg" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-9b263989-3b34-486f-a7ad-68fb4c0c0449/304f7f15-c2f0-4971-bb5f-3cc71fefd79b.png"></image>
 			<view class="intro">
-				<view class="greet">您好,{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }}</view>
-				<view class="note">一杯奶茶，一口软欧包，在奈雪遇见两种美好</view>
+				<view class="greet"><!-- 您好,{{ vk.getVuex('$user.userInfo.nickname') || vk.getVuex('$user.userInfo.username') }} --></view>
+				<view class="note"><!-- 一杯奶茶，一口软欧包，在奈雪遇见两种美好 --></view>
 			</view>
 		</view>
 		<view class="content">
 			<view class="entrance">
 				<view class="item" @tap="takeIn">
-					<image src="/static/images/index/zq.png" class="icon"></image>
-					<view class="title">自取</view>
+					
+					<image src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-9b263989-3b34-486f-a7ad-68fb4c0c0449/c8a70e08-a241-40ea-adca-f16d9a7bb123.png" class="icon"></image>
+					<view class="title">堂食</view>
+					<view class="note">提前点餐,到店自取</view>
 				</view>
 				<view class="item" @tap="takeout">
-					<image src="/static/images/index/wm.png" class="icon"></image>
+					<image src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-9b263989-3b34-486f-a7ad-68fb4c0c0449/1e2bdead-25f2-4a75-b3d4-b4fa05c103a8.png" class="icon"></image>
 					<view class="title">外卖</view>
-				</view>
-			</view>
-			<view class="info">
-				<view class="integral-section">
-					<view class="top">
-						<text class="title">我的积分</text>
-						<text class="value">{{1?userInfo.balance: 0}}</text>
-					</view>
-					<view class="bottom">
-							进入积分商城兑换奈雪券及周边好礼
-					</view>
-				</view>
-				<view class="qrcode-section">
-					<image src="../../static/images/index/qrcode.png"></image>
-					<text>会员码</text>
-				</view>
-			</view>
-			
-			<view class="navigators">
-				<view class="left">
-					<view class="grid flex-column just-content-center">
-						<view class="d-flex align-items-center">
-							<image src="../../static/images/index/csc.png" class="mark-img"></image>
-							<view class="font-size-sm text-color-base">奈雪的茶商城</view>
-						</view>
-						<view class="text-color-assist" style="margin-left: 40rpx; font-size: 20rpx"></view>
-					</view>
-					<view class="grid justify-content-end align-items-end ">
-						<image src="../../static/images/index/yzclh.png" class="yzclh-img"></image>
-					</view>
-				</view>
-				<view class="right">
-					<view class="tea-activity" @tap="invite">
-						<image src="/static/images/index/mcsb.png" class="mark-img"></image>
-						<view>买茶送包</view>
-						<view class="right-img">
-							<image src="/static/images/index/mcsb_bg.png" mode="widthFix"></image>
-						</view>
-					</view>
-					<view class="member-gifts" @tap="packages">
-						<image src="/static/images/index/hyjb.png" class="mark-img"></image>
-						<view>会员劵包</view>
-						<view class="right-img">
-							<image src="/static/images/index/hyjb_bg.png" mode="widthFix"></image>
-						</view>
-					</view>
+					<view class="note">提前点餐,外送到家</view>
 				</view>
 			</view>
 		</view>
-		
 	</view>
 </template>
 
@@ -87,7 +43,12 @@
 		},
 		methods: {
 			takeIn(){
-				vk.navigateTo('/pages/stores/stores');
+				 wx.chooseLocation({
+					 success(res) {
+					 	console.log(res)
+						vk.navigateTo('/pages/stores/stores');
+					 }
+				 })
 			},
 			
 			takeout(){
@@ -136,13 +97,15 @@
 				font-size: $font-size-lg;
 				margin-bottom: 10rpx;
 			}
-			.note{
-				font-size: $font-size-sm;
-			}
 		}
 	}
+	.note{
+		font-size: 24rpx;
+		margin: 20rpx 0;
+		color: darkgray;
+	}
 	.content{
-		padding: 0 30rpx;
+		padding: 0 40rpx;
 	}
 	
 	.entrance{
@@ -151,7 +114,9 @@
 		margin-top: -80rpx;
 		margin-bottom: 30rpx;
 		border-radius: 10rpx;
-		box-shadow: $box-shadow;
+		box-shadow:
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -179,10 +144,11 @@
 				height: 84rpx;
 				margin: 20rpx;
 			}
-			.title{}
+			.title{
 			font-size: 30rpx;
 			font-weight: 600;
 			color: $text-color-base;
+			}
 		}	
 }
 .info{

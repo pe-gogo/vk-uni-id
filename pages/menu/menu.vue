@@ -1,16 +1,14 @@
 <template>
 	<view class="container u-wrap">
-		<view class="store-top">
-			<u-icon name="arrow-left" class="back" @click="toHome()"></u-icon>
+		
 			<view class="intro">
+				<u-icon name="arrow-left" class="back" @click="toHome()"></u-icon>
 				<view class="greet">StoreName</view>
 				<view class="note">
-				
 					<u-icon name="star"></u-icon>
 					距离你  {{1.9}}  km
 				</view>
 			</view>
-		</view>
 		<view class="u-menu-wrap">
 			
 			<scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop"
@@ -33,17 +31,19 @@
 							<text>{{item.name}}</text>
 						</view>
 						<view class="item-container">
-							<view class="" v-for="(item1, index1) in item.foods" :key="index1">
+							<view class="" v-for="(item1, index1) in item.goodslist" :key="index1">
 								<view class="item-list">
 									<view class="right" style="width: 50%;">
-										<image @tap="toFood" class="item-menu-image" :src="item1.icon" mode=""></image>
+										<image @tap="toFood" class="item-menu-image" :src="item1.images" mode=""></image>
 									</view>
 									<view class="left"  style="width: 50;">
 										<view class="item-menu-name">{{item1.name}}</view>
 										<view class="item-menu-price">
 											<view class="">
 												¥     {{item1.price || 0}}
-												<u-icon name="plus"></u-icon>
+												<u-icon name="minus" @click="toCart(item1,index1)" v-if="show"></u-icon>
+												{{0|| }}
+												<u-icon name="plus" @click="toCart(item1,index1)"></u-icon>
 											</view>
 										</view>
 									</view>
@@ -56,43 +56,44 @@
 				</view>
 			</scroll-view>
 		</view>
-		<submit></submit>
+		
 	</view>
+	<submit v-show="show">
+		{{cartMoney}}
+	</submit>
 </template>
 
 
 <style lang="scss" scoped>
 	
-		.btn {
-											padding: 0 20rpx;
-											box-sizing: border-box;
-											font-size: $font-size-sm;
-											height: 44rpx;
-											line-height: 44rpx;
+	.btn {
+		padding: 0 20rpx;
+		box-sizing: border-box;
+		font-size: $font-size-sm;
+		height: 44rpx;
+		line-height: 44rpx;
 	
-											&.property_btn {
-												border-radius: 24rpx;
-											}
+		&.property_btn {
+			border-radius: 24rpx;
+		}
 	
-											&.add_btn,
-											&.reduce_btn {
-												padding: 0;
-												width: 44rpx;
-												border-radius: 44rpx;
+		&.add_btn,
+		&.reduce_btn {
+		padding: 0;
+		width: 44rpx;
+		border-radius: 44rpx;
 		}
 	}
 	
 	.container{
 		background-color: white;
 		width: 100%; 
-		
 		height: 100%;
 	}
 	.store-top{
 		z-index: 1;
-		background-color: #033D3A;
 		width: 100%;
-		height: 300rpx;
+		height: 200rpx;
 	}
 	.u-wrap {
 		background-color: white;
@@ -108,9 +109,9 @@
 		position: absolute;
 		display: flex;
 		flex-direction: column;
-		color: #ffffff;
+		color: #000;
 		// location
-		top: calc(0rpx + var(--status-bar-height));
+		top: calc(80rpx + var(--status-bar-height));
 		left: 40rpx;
 	}
 	
@@ -174,21 +175,25 @@
 		line-height: 1;
 	}
 	.intro{
+		background-color: #F8F8F8;
 		// 固定的
-		position: absolute;
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		color: #ffffff;
-		// location
-		top: calc(150rpx + var(--status-bar-height));
-		left: 40rpx;
+		// border-bottom: darkgray solid 1px;
+		box-shadow: $box-shadow;
+ 		width: 100%;
+		z-index: 99;
+		padding: 30rpx;
 		.greet{
-			color: #D9C3C3;
+			margin-top: 150rpx;
+			color: #000;
 			font-size: $font-size-lg;
 			margin-bottom: 10rpx;
 		}
 		.note{
-			color: #D9C3C3;
+			color: #000;
 			font-size: $font-size-sm;
 		}
 	}
@@ -273,7 +278,6 @@
 
 
 <script>
-	import classifyData from './classify.data.js';
 	export default {
 		data() {
 			return {
@@ -283,15 +287,27 @@
 				menuHeight: 0, // 左边菜单的高度
 				menuItemHeight: 0, // 左边菜单item的高度
 				itemId: '', // 栏目右边scroll-view用于滚动的id
-				tabbar: classifyData,
+				tabbar: [],
 				menuItemPos: [],
 				arr: [],
 				scrollRightTop: 0, // 右边栏目scroll-view的滚动条高度
 				timer: null, // 定时器
+				show: false,
+				btncount:0,
+				cartMoney: 0 ,
+				cart:[
+					
+				]
 			}
 		},
 		onLoad() {
+			this.getCategoriesList();
 			wx.hideTabBar()
+		},
+		computed:{
+			goodCartNum(){
+				
+			}
 		},
 		onReady() {
 			wx.hideTabBar()
@@ -302,14 +318,36 @@
 			wx.hideTabBar()
 		},
 		methods: {
-			
+			toCart(item,index){
+				this.show=true
+				this.cart.push({
+					...item
+				})
+				this.cartMoney += item.price
+				console.log(this.cart)
+			}
+			,
 			toFood(){
 				vk.navigateTo('/pages/menu/goodDes/goodDes');
 			},
-			
+			getCategoriesList(){
+				vk.callFunction({
+					url: 'client/categories.getList',
+					title: '请求中...',
+					data: {
+						
+					},
+					success: (data) => {
+						this.tabbar = data.list;
+					}
+				});
+			},
 			toHome(){
 				vk.navigateTo('/pages/index/index');
 				wx.showTabBar()
+			},
+			handleAddToCart(cate,good,num){
+				
 			},
 			
 			// 点击左边的栏目切换

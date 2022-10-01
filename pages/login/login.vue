@@ -12,7 +12,6 @@
 				<view class="login-btn">
 					<button class ="btn success circle" hover-class="hover" @click="login_weixin" :plain="false" type="success" shape="circle" :hair-line="false">微信一键登录</button>					
 				</view>
-			
 				<!-- #endif -->
 				<!-- #ifdef APP-PLUS -->
 				<view class="login-icon-item">

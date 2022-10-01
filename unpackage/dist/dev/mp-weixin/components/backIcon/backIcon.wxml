@@ -1,1 +1,0 @@
-<view><u-icon wx:if="{{b}}" class="back" bindclick="{{a}}" u-i="7fbadfea-0" bind:__l="__l" u-p="{{b}}"></u-icon></view>

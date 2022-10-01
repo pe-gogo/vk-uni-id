@@ -44,11 +44,12 @@
             }
             
         }
-        ,{
+		,
+		{
             "path" : "pages/menu/menu",
             "style" :                                                                                    
             {	
-				"navigationStyle": "custom",
+				"navigationStyle": "custom",	
 				"enablePullDownRefresh": false
             }
             
@@ -80,7 +81,7 @@
 				"style": {
 					"navigationBarTitleText": "数据库API演示"
 				}
-			},
+			}			,
 			{
 				"path": "db-test/list/list",
 				"style": {
@@ -214,9 +215,7 @@
 	"easycom": {
 		"autoscan": true
 	},
-	"requiredPrivateInfos":[
-		"chooseLocation"
-	],
+
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",

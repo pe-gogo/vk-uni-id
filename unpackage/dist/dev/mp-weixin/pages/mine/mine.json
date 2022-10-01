@@ -1,9 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "u-image": "../../uni_modules/vk-uview-ui/components/u-image/u-image",
-    "u-avatar": "../../uni_modules/vk-uview-ui/components/u-avatar/u-avatar",
-    "index-store": "../../components/IndexStore/IndexStore"
-  }
-}

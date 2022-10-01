@@ -3,7 +3,9 @@
 		<view class="left">
 			<view class="item">
 				<image style="height: 60rpx;width: 60rpx;" src="@/static/package.jpg"></image>
-				<view class="money">¥   248</view>
+				<view class="money">
+					¥<slot></slot>
+				</view>
 			</view>
 			
 		</view>
@@ -15,17 +17,24 @@
 
 <script>
 export default {
-	
+	props:{
+		
+	}
 };
 </script>
 
 <style lang="scss" scoped>
 .navigation {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin: 20rpx 0rpx;
+	border-radius: 50rpx;
 	height: 120rpx;
 	box-shadow: $box-shadow;
 	display: flex;
 	border: solid 2rpx #f2f2f2;
-	background-color: #ffffff;
+	background-color: #283913;
 	padding: 16rpx 0;
 	align-items: center;
 	.left {
@@ -37,8 +46,9 @@ export default {
 			flex-direction: row;
 			margin: 0 70rpx;
 			.money{
+				color: white;
 				margin-left: 30rpx;
-				font-size: 24rpx;
+				font-size: 48rpx;
 			}
 		}
 	}
