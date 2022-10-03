@@ -43,17 +43,19 @@
 		},
 		methods: {
 			takeIn(){
+				vk.setVuex('$user.orderType','takeout')
 				 wx.chooseLocation({
 					 success(res) {
 					 	console.log(res)
-						vk.navigateTo('/pages/stores/stores');
+						vk.navigateTo('/pages/menu/menu');
 					 }
 				 })
 			},
 			
 			takeout(){
 				if(vk.getVuex('$user.userInfo._id')){
-					vk.navigateTo('/pages/address/address');
+					vk.setVuex('$user.orderType','takeout');
+					vk.navigateTo('/pages/menu/menu');
 				}else{
 					vk.navigateTo('/pages/login/login');
 				}

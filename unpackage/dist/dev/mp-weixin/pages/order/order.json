@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-tabs-swiper": "../../uni_modules/vk-uview-ui/components/u-tabs-swiper/u-tabs-swiper",
+    "list-cell": "../../components/list-cell/list-cell"
+  }
+}

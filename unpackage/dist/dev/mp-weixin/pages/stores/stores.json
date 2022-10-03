@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "back-icon": "../../components/backIcon/backIcon",
+    "u-search": "../../uni_modules/vk-uview-ui/components/u-search/u-search"
+  }
+}

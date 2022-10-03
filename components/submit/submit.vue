@@ -28,8 +28,8 @@ export default {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	margin: 20rpx 0rpx;
-	border-radius: 50rpx;
+	margin: 0rpx 0rpx;
+	border-bottom: 50rpx;
 	height: 120rpx;
 	box-shadow: $box-shadow;
 	display: flex;

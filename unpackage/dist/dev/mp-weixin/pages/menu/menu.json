@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "modal": "../../components/modal/modal",
+    "popup-layer": "../../components/popup-layer/popup-layer",
+    "u-icon": "../../uni_modules/vk-uview-ui/components/u-icon/u-icon"
+  }
+}

@@ -70,13 +70,13 @@ var cloudObject = {
 		      dbName: dbName.goods,
 		      localKey:"goods_type",
 		      foreignKey: "goods_type",
-			  as:"goodslist",
+			  as:"goods_list",
 		      // 副表where条件
 		      whereJson: {
 			  },
 		      // 副表字段显示规则
 		      fieldJson: {
-				  _id:false
+				  
 			  },
 		      // 副表排序规则
 		    }
