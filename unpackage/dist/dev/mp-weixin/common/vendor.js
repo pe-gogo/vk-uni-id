@@ -7001,62 +7001,6 @@ Store.prototype._withCommit = function _withCommit(fn2) {
   this._committing = committing;
 };
 Object.defineProperties(Store.prototype, prototypeAccessors);
-var mapMutations = normalizeNamespace(function(namespace, mutations) {
-  var res = {};
-  if (!isValidMap(mutations)) {
-    console.error("[vuex] mapMutations: mapper parameter must be either an Array or an Object");
-  }
-  normalizeMap(mutations).forEach(function(ref2) {
-    var key = ref2.key;
-    var val = ref2.val;
-    res[key] = function mappedMutation() {
-      var args = [], len = arguments.length;
-      while (len--)
-        args[len] = arguments[len];
-      var commit2 = this.$store.commit;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, "mapMutations", namespace);
-        if (!module) {
-          return;
-        }
-        commit2 = module.context.commit;
-      }
-      return typeof val === "function" ? val.apply(this, [commit2].concat(args)) : commit2.apply(this.$store, [val].concat(args));
-    };
-  });
-  return res;
-});
-function normalizeMap(map) {
-  if (!isValidMap(map)) {
-    return [];
-  }
-  return Array.isArray(map) ? map.map(function(key) {
-    return { key, val: key };
-  }) : Object.keys(map).map(function(key) {
-    return { key, val: map[key] };
-  });
-}
-function isValidMap(map) {
-  return Array.isArray(map) || isObject(map);
-}
-function normalizeNamespace(fn2) {
-  return function(namespace, map) {
-    if (typeof namespace !== "string") {
-      map = namespace;
-      namespace = "";
-    } else if (namespace.charAt(namespace.length - 1) !== "/") {
-      namespace += "/";
-    }
-    return fn2(namespace, map);
-  };
-}
-function getModuleByNamespace(store, helper, namespace) {
-  var module = store._modulesNamespaceMap[namespace];
-  if (!module) {
-    console.error("[vuex] module namespace not found in " + helper + "(): " + namespace);
-  }
-  return module;
-}
 const pages = [
   {
     path: "pages/index/index",
@@ -7534,7 +7478,7 @@ switch (f) {
   default:
     g = f;
 }
-const p = h('{\n    "address": [\n        "127.0.0.1",\n        "192.168.31.50"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**/*.js",\n        "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), m = h('[{"provider":"aliyun","spaceName":"vk-demo","spaceId":"9b263989-3b34-486f-a7ad-68fb4c0c0449","clientSecret":"FsVU9+suIZ0wLYYTia/iBA==","endpoint":"https://api.bspapp.com"}]') || [];
+const p = h('{\n    "address": [\n        "127.0.0.1",\n        "10.90.26.133"\n    ],\n    "debugPort": 9001,\n    "initialLaunchType": "local",\n    "servePort": 7001,\n    "skipFiles": [\n        "<node_internals>/**/*.js",\n        "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), m = h('[{"provider":"aliyun","spaceName":"vk-demo","spaceId":"9b263989-3b34-486f-a7ad-68fb4c0c0449","clientSecret":"FsVU9+suIZ0wLYYTia/iBA==","endpoint":"https://api.bspapp.com"}]') || [];
 let _ = "";
 try {
   _ = "__UNI__6FA9A80";
@@ -9519,7 +9463,6 @@ exports.createStore = createStore;
 exports.e = e;
 exports.f = f$1;
 exports.index = index;
-exports.mapMutations = mapMutations;
 exports.n = n$1;
 exports.o = o$1;
 exports.p = p$1;

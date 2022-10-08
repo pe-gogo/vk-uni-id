@@ -31,11 +31,8 @@ const _sfc_main = {
     return {
       goods: [],
       ads: [
-        { image: "https://img-shop.qmimg.cn/s23107/2020/04/27/4ebdb582a5185358c4.jpg?imageView2/2/w/600/h/600" },
-        { image: "https://images.qmai.cn/s23107/2020/05/08/c25de6ef72d2890630.png?imageView2/2/w/600/h/600" },
-        { image: "https://img-shop.qmimg.cn/s23107/2020/04/10/add546c1b1561f880d.jpg?imageView2/2/w/600/h/600" },
-        { image: "https://images.qmai.cn/s23107/2020/04/30/b3af19e0de8ed42f61.jpg?imageView2/2/w/600/h/600" },
-        { image: "https://img-shop.qmimg.cn/s23107/2020/04/17/8aeb78516d63864420.jpg?imageView2/2/w/600/h/600" }
+        { image: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-9b263989-3b34-486f-a7ad-68fb4c0c0449/d21fc642-f911-4ba9-98e4-b6c0aedc1a73.webp" },
+        { image: "https://pic4.zhimg.com/80/v2-2d53a7b90e55544f9b59dd46768052d1_1440w.webp" }
       ],
       menuScrollIntoView: "",
       currentCateId: "60bc303c5f269b8700014fc46ba448cd",
@@ -45,11 +42,22 @@ const _sfc_main = {
       goodDetailModalVisible: false,
       good: {},
       category: {},
-      cartPopupVisible: false,
-      orderType: ""
+      cartPopupVisible: false
     };
   },
   computed: {
+    takeoutChoose() {
+      return vk.getVuex("$user.chooseAddress");
+    },
+    chooseStore() {
+      return vk.getVuex("$store.address");
+    },
+    isLogin() {
+      return Boolean(vk.getVuex("$user.userInfo._id"));
+    },
+    orderType() {
+      return vk.getVuex("$order.type");
+    },
     goodCartNum() {
       return (id) => this.cart.reduce((acc, cur) => {
         if (cur.id === id) {
@@ -84,14 +92,18 @@ const _sfc_main = {
   onLoad() {
     this.init();
   },
-  methods: __spreadProps(__spreadValues({}, common_vendor.mapMutations(["SET_ORDERTYPE"])), {
+  methods: {
+    chooseStore() {
+      return vk.getVuex("$store.address");
+    },
     tapTakein() {
-      if (Object.keys(this.choseStore).length != 0) {
-        this.SET_ORDERTYPE("takein");
-      } else {
+      if (!this.isLogin) {
         common_vendor.index.navigateTo({
-          url: "../stores/stores"
+          url: "../login/login"
         });
+        return;
+      } else {
+        vk.setVuex("$order.type", "takein");
       }
     },
     tapTakeOut() {
@@ -100,10 +112,9 @@ const _sfc_main = {
           url: "../login/login"
         });
         return;
+      } else {
+        vk.setVuex("$order.type", "takeout");
       }
-      common_vendor.index.navigateTo({
-        url: "../address/address"
-      });
     },
     tapStore() {
       common_vendor.index.navigateTo({
@@ -111,10 +122,9 @@ const _sfc_main = {
       });
     },
     init() {
-      this.orderType = vk.setVuex("$user.orderType");
+      this.orderType = vk.getVuex("$order.type");
       vk.callFunction({
         url: "client/categories.getList",
-        title: "\u8BF7\u6C42\u4E2D...",
         data: {},
         success: (data) => {
           this.goods = data.list;
@@ -261,12 +271,13 @@ const _sfc_main = {
         success: (res) => {
           res.eventChannel.emit("data", {
             price: this.getCartGoodsPrice,
-            cart: this.cart
+            cart: this.cart,
+            number: this.getCartGoodsNumber
           });
         }
       });
     }
-  })
+  }
 };
 if (!Array) {
   const _easycom_u_icon2 = common_vendor.resolveComponent("u-icon");
@@ -282,19 +293,18 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: $data.orderType == "takein"
-  }, $data.orderType == "takein" ? common_vendor.e({
-    b: common_vendor.t(_ctx.choseStore.name),
-    c: common_vendor.o((...args) => $options.tapStore && $options.tapStore(...args)),
-    d: _ctx.choseStore.distance
-  }, _ctx.choseStore.distance ? {
-    e: common_vendor.t(_ctx.choseStore.distance)
-  } : {}) : {}, {
-    f: $data.orderType == "takein" ? 1 : "",
-    g: common_vendor.o((...args) => $options.tapTakein && $options.tapTakein(...args)),
-    h: $data.orderType == "takeout" ? 1 : "",
-    i: common_vendor.o((...args) => $options.tapTakeOut && $options.tapTakeOut(...args)),
-    j: common_vendor.f($data.goods, (item, index, i0) => {
+    a: $options.orderType == "takein"
+  }, $options.orderType == "takein" ? {
+    b: common_vendor.o((...args) => $options.tapStore && $options.tapStore(...args)),
+    c: common_vendor.t($options.chooseStore.name)
+  } : {
+    d: common_vendor.t($options.takeoutChoose.site)
+  }, {
+    e: $options.orderType == "takein" ? 1 : "",
+    f: common_vendor.o((...args) => $options.tapTakein && $options.tapTakein(...args)),
+    g: $options.orderType == "takeout" ? 1 : "",
+    h: common_vendor.o((...args) => $options.tapTakeOut && $options.tapTakeOut(...args)),
+    i: common_vendor.f($data.goods, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: common_vendor.t($options.menuCartNum(item._id)),
@@ -305,14 +315,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         g: common_vendor.o(($event) => $options.handleMenuTap(item._id), index)
       };
     }),
-    k: $data.menuScrollIntoView,
-    l: common_vendor.f($data.ads, (item, index, i0) => {
+    j: $data.menuScrollIntoView,
+    k: common_vendor.f($data.ads, (item, index, i0) => {
       return {
         a: item.image,
         b: index
       };
     }),
-    m: common_vendor.f($data.goods, (item, index, i0) => {
+    l: common_vendor.f($data.goods, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: item.icon,
@@ -349,27 +359,27 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         e: index
       };
     }),
-    n: $data.cateScrollTop,
-    o: common_vendor.o((...args) => $options.handleGoodsScroll && $options.handleGoodsScroll(...args)),
-    p: $data.cart.length > 0
+    m: $data.cateScrollTop,
+    n: common_vendor.o((...args) => $options.handleGoodsScroll && $options.handleGoodsScroll(...args)),
+    o: $data.cart.length > 0
   }, $data.cart.length > 0 ? {
-    q: common_vendor.o((...args) => $options.openCartPopup && $options.openCartPopup(...args)),
-    r: common_vendor.t($options.getCartGoodsNumber),
-    s: common_vendor.t($options.getCartGoodsPrice),
-    t: common_vendor.t($options.disabledPay ? `\u5DEE${$options.spread}\u5143\u8D77\u9001` : "\u53BB\u7ED3\u7B97"),
-    v: $options.disabledPay,
-    w: common_vendor.o((...args) => $options.topay && $options.topay(...args))
+    p: common_vendor.o((...args) => $options.openCartPopup && $options.openCartPopup(...args)),
+    q: common_vendor.t($options.getCartGoodsNumber),
+    r: common_vendor.t($options.getCartGoodsPrice),
+    s: common_vendor.t($options.disabledPay ? `\u5DEE${$options.spread}\u5143\u8D77\u9001` : "\u53BB\u7ED3\u7B97"),
+    t: $options.disabledPay,
+    v: common_vendor.o((...args) => $options.topay && $options.topay(...args))
   } : {}, {
-    x: $data.good.images
+    w: $data.good.images
   }, $data.good.images ? {
-    y: $data.good.images
+    x: $data.good.images
   } : {}, {
-    z: common_vendor.o((...args) => $options.closeGoodDetailModal && $options.closeGoodDetailModal(...args)),
-    A: common_vendor.t($data.good.name),
-    B: common_vendor.t($data.good.content),
-    C: $data.good.property
+    y: common_vendor.o((...args) => $options.closeGoodDetailModal && $options.closeGoodDetailModal(...args)),
+    z: common_vendor.t($data.good.name),
+    A: common_vendor.t($data.good.content),
+    B: $data.good.property
   }, $data.good.property ? {
-    D: common_vendor.f($data.good.property, (item, index, i0) => {
+    C: common_vendor.f($data.good.property, (item, index, i0) => {
       return common_vendor.e({
         a: common_vendor.t(item.name),
         b: item.desc
@@ -388,16 +398,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       });
     })
   } : {}, {
-    E: common_vendor.t($data.good.price),
-    F: $options.getGoodSelectedProps($data.good)
+    D: common_vendor.t($data.good.price),
+    E: $options.getGoodSelectedProps($data.good)
   }, $options.getGoodSelectedProps($data.good) ? {
-    G: common_vendor.t($options.getGoodSelectedProps($data.good))
+    F: common_vendor.t($options.getGoodSelectedProps($data.good))
   } : {}, {
-    H: common_vendor.o((...args) => $options.handlePropertyReduce && $options.handlePropertyReduce(...args)),
-    I: common_vendor.t($data.good.number),
-    J: common_vendor.o((...args) => $options.handlePropertyAdd && $options.handlePropertyAdd(...args)),
-    K: common_vendor.o((...args) => $options.handleAddToCartInModal && $options.handleAddToCartInModal(...args)),
-    L: common_vendor.p({
+    G: common_vendor.o((...args) => $options.handlePropertyReduce && $options.handlePropertyReduce(...args)),
+    H: common_vendor.t($data.good.number),
+    I: common_vendor.o((...args) => $options.handlePropertyAdd && $options.handlePropertyAdd(...args)),
+    J: common_vendor.o((...args) => $options.handleAddToCartInModal && $options.handleAddToCartInModal(...args)),
+    K: common_vendor.p({
       show: $data.goodDetailModalVisible,
       color: "#5A5B5C",
       width: "90%",
@@ -405,8 +415,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       padding: "0rpx",
       radius: "12rpx"
     }),
-    M: common_vendor.o((...args) => $options.handleCartClear && $options.handleCartClear(...args)),
-    N: common_vendor.f($data.cart, (item, index, i0) => {
+    L: common_vendor.o((...args) => $options.handleCartClear && $options.handleCartClear(...args)),
+    M: common_vendor.f($data.cart, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: common_vendor.t(item.props_text),
@@ -417,9 +427,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         g: index
       };
     }),
-    O: $data.orderType == "takeout"
-  }, $data.orderType == "takeout" ? {} : {}, {
-    P: common_vendor.p({
+    N: $options.orderType == "takeout"
+  }, $options.orderType == "takeout" ? {} : {}, {
+    O: common_vendor.p({
       direction: "top",
       showPop: $data.cartPopupVisible
     })

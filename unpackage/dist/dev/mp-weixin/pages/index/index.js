@@ -11,23 +11,27 @@ const _sfc_main = {
       userInfo: []
     };
   },
+  onLoad() {
+  },
   onLaunch() {
     vk = common_vendor.index.vk;
     this.init();
   },
   methods: {
     takeIn() {
-      vk.setVuex("$user.orderType", "takeout");
-      wx.chooseLocation({
-        success(res) {
-          console.log(res);
-          vk.navigateTo("/pages/menu/menu");
-        }
-      });
+      if (vk.getVuex("$user.userInfo._id")) {
+        vk.setVuex("$order.type", "takein");
+        vk.navigateTo("/pages/stores/stores");
+      } else {
+        vk.navigateTo("/pages/login/login");
+      }
     },
     takeout() {
       if (vk.getVuex("$user.userInfo._id")) {
-        vk.setVuex("$user.orderType", "takeout");
+        vk.setVuex("$order.type", "takeout");
+        if (!vk.getVuex("$user.chooseAddress")) {
+          vk.navigateTo("/pages/address/address");
+        }
         vk.navigateTo("/pages/menu/menu");
       } else {
         vk.navigateTo("/pages/login/login");

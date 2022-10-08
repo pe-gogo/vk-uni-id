@@ -26,6 +26,7 @@
 </template>
 
 <script>
+	// import * from '../../common/gaode/amap-wx.130.js';
 	var vk = uni.vk;
 	export default {
 		data() {
@@ -34,28 +35,33 @@
 				encryptedKey:"",
 				image:"",
 				data:{},
-				userInfo:[]
+				userInfo:[],
 			}
 		},
+		onLoad() {
+			
+		}, 
 		onLaunch() {
 			vk = uni.vk;
 			this.init();
 		},
 		methods: {
 			takeIn(){
-				vk.setVuex('$user.orderType','takeout')
-				 wx.chooseLocation({
-					 success(res) {
-					 	console.log(res)
-						vk.navigateTo('/pages/menu/menu');
-					 }
-				 })
+				if(vk.getVuex('$user.userInfo._id')){
+					vk.setVuex('$order.type','takein')
+					vk.navigateTo('/pages/stores/stores');
+				}else{
+					vk.navigateTo('/pages/login/login');
+				}
 			},
 			
 			takeout(){
 				if(vk.getVuex('$user.userInfo._id')){
-					vk.setVuex('$user.orderType','takeout');
-					vk.navigateTo('/pages/menu/menu');
+					vk.setVuex('$order.type','takeout')
+					if(!vk.getVuex("$user.chooseAddress")){
+						vk.navigateTo('/pages/address/address');
+					}
+						vk.navigateTo("/pages/menu/menu")
 				}else{
 					vk.navigateTo('/pages/login/login');
 				}

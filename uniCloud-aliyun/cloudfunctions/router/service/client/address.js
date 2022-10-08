@@ -58,11 +58,13 @@ var cloudObject = {
 		let res = { code: 0, msg: '' };
 		let { uid } = this.getClientInfo(); // 获取客户端信息
 		// 业务逻辑开始-----------------------------------------------------------
-		await vk.daoCenter.addressDao.add({
-				_id: data.uid,
-				address:[
-					
-					]
+		await vk.daoCenter.addressDao.update({
+				whereJson:{
+					_id: data.uid
+				},
+				dataJson:{
+					address:data.address,
+				}
 			});
 		// 业务逻辑结束-----------------------------------------------------------
 		return res;

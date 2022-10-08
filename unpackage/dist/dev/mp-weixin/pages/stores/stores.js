@@ -30,7 +30,7 @@ const _sfc_main = {
     async getList() {
       const res = await storeObj.getList({
         pageIndex: 1,
-        pageSize: 20,
+        pageSize: 10,
         getMain: false
       });
       vk.setStorageSync("markers", res.rows);
@@ -47,7 +47,8 @@ const _sfc_main = {
         }
       });
     },
-    to() {
+    to(index) {
+      vk.setVuex("$store.address", this.markers[index]);
       vk.navigateTo("/pages/menu/menu");
     }
   }
@@ -74,10 +75,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     e: common_vendor.f($data.markers, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
-        b: common_vendor.t(item.road)
+        b: common_vendor.t(item.road),
+        c: common_vendor.o(($event) => $options.to(index))
       };
-    }),
-    f: common_vendor.o((...args) => $options.to && $options.to(...args))
+    })
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/yaowenya/Documents/HBuilderProjects/vk-uni-id/pages/stores/stores.vue"]]);

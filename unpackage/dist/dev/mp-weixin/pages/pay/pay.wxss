@@ -353,7 +353,7 @@
   flex-direction: row;
   margin: 30rpx 0 30rpx 0;
   border-radius: 19rpx;
-  border: solid 1rpx;
+  border: solid 1rpx gainsboro;
   height: 300 rpx;
 }
 .item-list .item-menu-name.data-v-c10d0c50 {
@@ -396,8 +396,10 @@
   padding: 50rpx;
   border-top-right-radius: 15rpx;
   border-top-left-radius: 15rpx;
+  padding: 30rpx;
   height: 100%;
   width: 100%;
+  background-color: #ffffff;
 }
 .content .to.data-v-c10d0c50 {
   font-size: 30rpx;
@@ -405,12 +407,9 @@
 }
 .content .list.data-v-c10d0c50 {
   margin: 30rpx 0rpx;
-  border-top: #000 solid 1rpx;
-  border-bottom: #000 solid 1rpx;
 }
 .nav.data-v-c10d0c50 {
   width: 100%;
-  height: 212rpx;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;

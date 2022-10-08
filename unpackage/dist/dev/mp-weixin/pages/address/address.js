@@ -30,17 +30,21 @@ const _sfc_main = {
     this.load();
   },
   methods: {
+    toMenu(index) {
+      vk.setVuex("$order.type", "takeout");
+      common_vendor.index.setStorageSync("address", this.userAddress[index]);
+      vk.setVuex("$user.chooseAddress", this.userAddress[index]);
+      vk.navigateTo("../menu/menu");
+    },
     async load() {
       let res = await addressObject.findById({
         data: {
           userInfo: vk.getVuex("$user.userInfo")
         }
       });
-      if (res.item.address[0]) {
-        vk.setVuex("$user.userInfo.address", res.item.address);
-        this.userAddress = vk.getVuex("$user.userInfo.address");
-        this.show = true;
-      }
+      vk.setVuex("$user.userInfo.address", res.item.address);
+      this.userAddress = vk.getVuex("$user.userInfo.address");
+      this.show = true;
     },
     init() {
       let that = this;
@@ -93,7 +97,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: "db675620-0-" + i0,
         e: common_vendor.o(($event) => $options.deleteAdd(index)),
         f: "db675620-1-" + i0,
-        g: res.name
+        g: res.name,
+        h: common_vendor.o(($event) => $options.toMenu(index), res.name)
       };
     }),
     c: common_vendor.o(_ctx.update),

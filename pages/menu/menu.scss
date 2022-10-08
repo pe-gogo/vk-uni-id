@@ -193,9 +193,9 @@ page {
 	.coupon {
 		flex: 1;
 		width: 100%;
-		background-color: $bg-color-primary;
+		background-color: aliceblue;
 		font-size: $font-size-base;
-		color: $color-primary;
+		color: #000;
 		padding: 0 20rpx;
 		display: flex;
 		align-items: center;
@@ -209,7 +209,7 @@ page {
 			text-overflow: ellipsis;
 		}
 		
-		.iconfont {
+		.infont {
 			line-height: 100%;
 		}
 	}

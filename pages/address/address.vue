@@ -1,7 +1,7 @@
 <template>
 	
 	<view v-if="show">
-		<view class="item" v-for="(res, index) in userAddress" :key="res.name">
+		<view class="item" v-for="(res, index) in userAddress" :key="res.name" @tap="toMenu(index)">
 			<view class="top">
 				<view class="name">{{ res.name }}</view>
 				<view class="phone">{{ res.phone }}</view>
@@ -56,6 +56,12 @@ export default {
 			this.load()
 	},
 	methods: {
+		toMenu(index){
+			vk.setVuex("$order.type",'takeout')
+			uni.setStorageSync('address',this.userAddress[index]);
+			vk.setVuex("$user.chooseAddress",this.userAddress[index])
+			vk.navigateTo('../menu/menu');
+		},
 		async load(){
 			// if(uni.getStorageSync('userAddress')){
 			// 	this.userAddress =  uni.getStorageSync('userAddress')
@@ -68,12 +74,12 @@ export default {
 						 userInfo : vk.getVuex('$user.userInfo')
 					},
 				})
-				if(res.item.address[0]){
+				// if(res.item.address[0]){
 					vk.setVuex('$user.userInfo.address',res.item.address)
 					this.userAddress =  vk.getVuex('$user.userInfo.address')
 					this.show = true
-
-				}
+				// }
+				
 			},
 		init(){
 				let that = this;

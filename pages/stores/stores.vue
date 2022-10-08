@@ -14,7 +14,7 @@
 				 :show-action = "false"
 				 placeholder="搜索路名/小区/写字楼/学校等"
 				 ></u-search>
-			<view class="store" v-for="(item,index) in markers" @tap="to">
+			<view class="store" v-for="(item,index) in markers" @tap="to(index)">
 				<view class="store-title">
 					<view class="store-name">{{item.name}}</view>
 					<view class="store-status"></view>
@@ -73,7 +73,7 @@ export default {
 		async getList(){
 				const res = await storeObj.getList({
 					pageIndex:1,
-					pageSize:20,
+					pageSize:10,
 					getMain:false,
 				});
 				vk.setStorageSync('markers',res.rows);
@@ -94,7 +94,8 @@ export default {
 				// #endif
 		},
 		
-		to(){
+		to(index){
+			vk.setVuex('$store.address',this.markers[index])
 			vk.navigateTo('/pages/menu/menu');
 		}
 	}

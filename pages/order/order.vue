@@ -9,38 +9,30 @@
 					<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
 						<view class="page-box">
 							<view class="order" v-for="(res, index) in dataList" :key="res._id">
-								<view class="orders-list d-flex flex-column w-100" style="padding: 20rpx; padding-bottom: 0;">
-									<view class="order-item" v-for="(item, index) in res.cart" :key="index" style="margin-bottom: 30rpx;" @tap="detail(item._id)">
-										<list-cell :hover="false">
-											<view class="w-100 d-flex align-items-center">
-												<view class="flex-fill d-flex flex-column">
-													<view class="font-size-lg text-color-base" style="margin-bottom: 20rpx;">
-														店面名字
-													</view>
-													<view class="font-size-sm text-color-assist">订单编号：{{res._id}}</view>
-												</view>
-												<view class="font-size-lg text-color-primary">
-													<image :src="item.image"></image>
-												</view>
-											</view>
-										</list-cell>
-										<list-cell :hover="false" last>
-											<view class="w-100 d-flex flex-column">
-												<view class="w-100 text-truncate font-size-lg text-color-base" style="margin-bottom: 20rpx;">
-													{{item.name}}
-												</view>
-												<view class="d-flex justify-content-between align-items-center" style="margin-bottom: 30rpx;">
-													<view class="font-size-sm text-color-assist">
-														{{res._add_time}}
-													</view>
-													<view class="d-flex font-size-sm text-color-base align-items-center">
-														<view style="margin-right: 10rpx;">共{{item.number}}件商品，实付 {{res.money}}</view>
-													</view>
-												</view>
-											</view>
-										</list-cell>
+									<view class="item-top">
+										<view class="store-name"
+											style="font-size: 34rpx;
+												   font-weight: 600;
+											"
+										>{{res.store.name}}</view>
+										<view class="u-order-time"
+											style="margin-left: 30rpx;margin-top: 4rpx;"
+										></view>
+										<view class="u-row-right"
+											style="position: absolute; right: 10%;"
+										>{{res.payType}}</view>
 									</view>
-								</view>
+									<view class="mtop">
+										<view class="item-top" v-for="(item, index) in res.cart" :key="index" style="margin-bottom: 30rpx;" @tap="detail(item._id)">
+												<view class="mtop">
+													<image :src="item.image"></image>
+													<view class="count"
+													>共  {{res.allNumber}}  件</view>
+													<view class="count" style="margin-top: 10%;">实付 ¥{{res.money}} 元</view>
+												</view>
+										</view>
+									</view>
+									
 							</view>
 						</view>
 					</scroll-view>
@@ -58,23 +50,22 @@ export default {
 			dataList: [],
 			list: [
 				{
-					name: '待付款'
+					name: '全部'
 				},
 				{
-					name: '待发货'
+					name: '外送'
 				},
 				{
-					name: '待收货'
-				},
-				{
-					name: '待评价',
-					count: 12
+					name: '自取'
 				}
 			],
 		
 		};
 	},
 	onLoad() {
+		this.getDataList();
+	},
+	onShow() {
 		this.getDataList();
 	},
 	computed: {
@@ -87,10 +78,6 @@ export default {
 		},
 		// 价格整数
 		priceInt() {
-			return val => {
-				if (val !== parseInt(val)) return val.split('.')[0];
-				else return val;
-			};
 		}
 	},
 	methods: {
@@ -119,6 +106,22 @@ page {
 </style>
 
 <style lang="scss" scoped>
+	.count{
+		position: absolute;
+		right: 10%;
+	}
+	.mtop{
+		display: flex;
+		flex-direction: row;	
+		image{
+			height: 150rpx;
+			width: 150rpx;
+		}
+	}
+	.item-top{
+		display: flex;
+		flex-direction: row;
+	}
 .order {
 	width: 710rpx;
 	background-color: #ffffff;

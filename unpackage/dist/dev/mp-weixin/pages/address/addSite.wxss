@@ -347,3 +347,6 @@
 .iconaixin1.data-v-5adf3af8:before {
   content: "\e63c";
 }
+.add.data-v-5adf3af8 {
+  padding: 50rpx;
+}

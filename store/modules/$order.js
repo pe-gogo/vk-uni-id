@@ -22,7 +22,8 @@ export default {
 		 * js更新示例
 		 * vk.setVuex('$user.userInfo.avatar', avatar);
 		 */
-		goodsInOrder: $order.goodsInOrder || {}
+		goodsInOrder: $order.goodsInOrder || {},
+		type : $order.type || ''
 	},
 	/**
 	 * 从基本数据(state)派生的数据，相当于state的计算属性

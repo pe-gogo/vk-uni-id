@@ -7,25 +7,19 @@
 				<view class="header">
 					<view class="left" v-if="orderType == 'takein'">
 						<view class="store-name" @tap="tapStore">
-							<text>{{ choseStore.name }}</text>
 							<view class="iconfont icon-arrow-right"></view>
 						</view>
 						<view class="store-location">
 							<image src="/static/images/order/location.png" style="width: 30rpx; height: 30rpx;" class="mr-10"></image>
-							<text v-if="choseStore.distance">距离您{{ choseStore.distance }}km</text>
-							<text v-else>请选择您附近门店</text>
+							<text>{{chooseStore.name}}</text>
 						</view>
 					</view>
 					<view class="left overflow-hidden" v-else>
 						<view class="d-flex align-items-center overflow-hidden">
-							<image src="/static/images/order/location.png" style="width: 30rpx; height: 30rpx;" class="mr-10"></image>
-							<view class="font-size-extra-lg text-color-base font-weight-bold text-truncate">
-							</view>
+							<image src="/static/images/order/location.png" style="width: 30rpx; height: 30rpx;margin-right: 20rpx" class="mr-10"></image>
+							<text>{{takeoutChoose.site}}</text>
 						</view>
-						<view class="font-size-sm text-color-assist overflow-hidden text-truncate">
-							由
-							配送
-						</view>
+						
 					</view>
 					<view class="right">
 						<view class="dinein" :class="{ active: orderType == 'takein' }" @tap="tapTakein"><text>自取</text></view>
@@ -225,7 +219,7 @@
 </template>
 
 <script>
-	var vk = uni.vk;
+var vk = uni.vk;
 import { mapState, mapMutations } from 'vuex';
 import modal from '@/components/modal/modal'
 import popupLayer from '@/components/popup-layer/popup-layer'
@@ -238,11 +232,8 @@ export default {
 		return {
 			goods: [],
 			ads: [
-				{ image: 'https://img-shop.qmimg.cn/s23107/2020/04/27/4ebdb582a5185358c4.jpg?imageView2/2/w/600/h/600' },
-				{ image: 'https://images.qmai.cn/s23107/2020/05/08/c25de6ef72d2890630.png?imageView2/2/w/600/h/600' },
-				{ image: 'https://img-shop.qmimg.cn/s23107/2020/04/10/add546c1b1561f880d.jpg?imageView2/2/w/600/h/600' },
-				{ image: 'https://images.qmai.cn/s23107/2020/04/30/b3af19e0de8ed42f61.jpg?imageView2/2/w/600/h/600' },
-				{ image: 'https://img-shop.qmimg.cn/s23107/2020/04/17/8aeb78516d63864420.jpg?imageView2/2/w/600/h/600' }
+				{ image: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-9b263989-3b34-486f-a7ad-68fb4c0c0449/d21fc642-f911-4ba9-98e4-b6c0aedc1a73.webp' },
+				{ image: 'https://pic4.zhimg.com/80/v2-2d53a7b90e55544f9b59dd46768052d1_1440w.webp' },
 			],
 			menuScrollIntoView:'',
 			currentCateId:'60bc303c5f269b8700014fc46ba448cd',
@@ -253,10 +244,21 @@ export default {
 			good: {}, //当前饮品
 			category: {}, //当前饮品所在分类
 			cartPopupVisible: false, //购物车详情展示
-			orderType:''
 		};
 	},
 	computed: {
+		takeoutChoose(){
+			return 	vk.getVuex("$user.chooseAddress")
+		},
+		chooseStore(){
+			return vk.getVuex('$store.address');
+		},
+		isLogin(){
+			return Boolean(vk.getVuex("$user.userInfo._id"))
+		},
+		orderType(){
+			return vk.getVuex('$order.type')
+		},
 		goodCartNum() { //计算商品选中数量
 			return (id) =>this.cart.reduce((acc,cur) =>{
 					if(cur.id === id) {
@@ -293,16 +295,20 @@ export default {
 		this.init();
 	},
 	methods: {
-		...mapMutations(['SET_ORDERTYPE']),
+		chooseStore(){
+			return vk.getVuex('$store.address');
+		},
 		// 切换自取
 		tapTakein() {
-			if (Object.keys(this.choseStore).length != 0) {
-				this.SET_ORDERTYPE('takein');
-			} else {
+			if (!this.isLogin) {
 				uni.navigateTo({
-					url: '../stores/stores'
+					url: '../login/login'
 				});
-			}
+				return;
+				}
+				else{
+					vk.setVuex('$order.type',"takein")
+				}
 		},
 		// 切换外卖
 		tapTakeOut() {
@@ -310,13 +316,10 @@ export default {
 				uni.navigateTo({
 					url: '../login/login'
 				});
-
 				return;
+			}else{
+				vk.setVuex('$order.type',"takeout")
 			}
-
-			uni.navigateTo({
-				url: '../address/address'
-			});
 		},
 		// 选取门店
 		tapStore() {
@@ -335,10 +338,9 @@ export default {
 		   //  .then(res => {
 		   //   this.goods = res.result.data;
 		   //  });
-				this.orderType = vk.setVuex('$user.orderType')
+				this.orderType = vk.getVuex("$order.type")
 		        vk.callFunction({
 		         url: 'client/categories.getList',
-		         title: '请求中...',
 		         data: {
 		          
 		         },
@@ -486,9 +488,7 @@ export default {
 			this.cart[index].number += 1
 		},
 		
-		topay() {
-			
-			
+		topay() {	
 				vk.navigateTo({
 				  url: `/pages/pay/pay`,
 				  events: {
@@ -502,7 +502,8 @@ export default {
 				    // 通过eventChannel向被打开页面传送数据
 				    res.eventChannel.emit('data', { 
 						price:this.getCartGoodsPrice,
-						cart:this.cart
+						cart:this.cart,
+						number:this.getCartGoodsNumber
 					})
 				  }
 				})

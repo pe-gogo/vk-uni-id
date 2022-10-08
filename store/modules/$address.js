@@ -12,6 +12,7 @@ export default {
 	 * vuex的基本数据，用来存储变量
 	 */
 	state: {
+	
 		/**
 		 * 登录地址信息
 		 * js调用示例

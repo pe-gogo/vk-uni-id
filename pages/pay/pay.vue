@@ -7,21 +7,23 @@
 				<view class="header">
 					
 					<view class="left overflow-hidden">
-						<view class="d-flex align-items-center overflow-hidden">
+						<view  class="d-flex align-items-center overflow-hidden">
 							<image src="/static/images/order/location.png" style="width: 30rpx; height: 30rpx;" class="mr-10"></image>
-								{{"location"||0}}
-							<view class="font-size-extra-lg text-color-base font-weight-bold text-truncate">
+							<view v-if="orderType =='takein'" class="font-size-extra-lg text-color-base font-weight-bold text-truncate">
+								{{chooseStore.name}}
+							</view>
+							<view  v-else  class="font-size-sm text-color-assist overflow-hidden text-truncate">
+								{{takeoutChoose.site}}
 							</view>
 						</view>
-						<view class="font-size-sm text-color-assist overflow-hidden text-truncate">
-							{{"stree"}}
-						</view>
+				
 					</view>
 					<view class="right">
-						<view class="takeout" :class="{ active: orderType == 'takeIn' }" @tap="tapTakeIn"><text>自取</text></view>
+						<view class="takeout" :class="{ active: orderType == 'takein' }" @tap="tapTakeIn"><text>自取</text></view>
 						<view class="takeout" :class="{ active: orderType == 'takeout' }" @tap="tapTakeOut"><text>外卖</text></view>
 					</view>
 				</view>
+			</view>
 				<view class="content">
 					<view class="to" >
 						配送时间
@@ -49,22 +51,22 @@
 								</view>
 							</view>
 					</view>
-					<view style="display: flex; flex-direction: row-reverse;border-bottom: 1rpx solid;padding:20rpx 40rpx;">
+					<view style="display: flex; flex-direction: row-reverse;border-bottom: 1rpx solid gainsboro;padding:20rpx 40rpx;">
 						<view style="margin-left:30rpx;font-size: 30rpx; font-weight: 500;">¥		{{price}}</view>
 						合计  
 					</view>
 					<view class="orderNote "
-						style="padding: 20rpx 0;display: flex;flex-direction: row;"
+						style="padding: 20rpx 0;display: flex"
 					>
-						订单备注
+						<u-input placeholder="订单备注" v-model="orderNote" :border="false"></u-input>
 					</view>
+
 					<u-button  :custom-style="customStyle" @click="pay()">
 						提交订单
 					</u-button>
 				</view>
 			</view>
 		</view>
-	</view>
 </template>
 
 <script>
@@ -72,14 +74,16 @@
 export default {
 	data() {
 		return {
+			orderNote:'',
 			cart: [],
-			price:99999,
+			price:0,
 			totalFee: '',
 			outTradeNo: '',
 			ensureAddressModalVisible: false,
 			form: {
 				remark: ''
 			},
+			number:0,
 			storeName: '',
 			customStyle:{
 				width: '80px',
@@ -95,29 +99,45 @@ export default {
 		    eventChannel.on('data', (data) => {
 				this.cart = data.cart
 				this.price = data.price
+				this.number = data.number
 		    });
 		  }
 	},
 	computed: {
-		
+		orderType(){
+			return vk.getVuex('$order.type')
+		},
+		takeoutChoose(){
+			return 	vk.getVuex("$user.chooseAddress")
+		},
+		chooseStore(){
+			return vk.getVuex('$store.address');
+		},
 	},
 	methods: {
 		pay(){
 			vk.showLoading({
 				title:"支付中"
 			})
-			
 			vk.callFunction({
 				url: 'client/order/kh/order.insert',
 				data: {
 					cart: this.cart,
+					address:this.takeoutChoose,
+					store:this.chooseStore,
 					money: this.price,
-					orderType:1
+					note: this.orderNote,
+					type:this.orderType,
+					payType:'已支付',
+					allNumber:this.number
 				},
 				success: (data) => {
 					vk.hideLoading();
 					vk.alert("支付成功");
-				}
+					uni.switchTab({
+						url:'/pages/order/order'
+					})
+				},
 			});
 			
 		}
@@ -134,7 +154,8 @@ export default {
 		flex-direction: row;
 		margin: 30rpx 0 30rpx 0;
 		border-radius: 19rpx;
-		border: solid 1rpx;
+		border: solid 1rpx gainsboro;
+		
 		height: 300 rpx;
 		
 		.item-menu-name {
@@ -183,16 +204,17 @@ export default {
 	padding: 50rpx ;
 	border-top-right-radius: 15rpx;
 	border-top-left-radius: 15rpx;
+	padding: 30rpx;
 	height: 100%;
 	width: 100%;
+	background-color: #ffffff;
 	.to{
 		font-size: 30rpx;
 		font-weight: 600;
 	}
 	.list{
 		margin: 30rpx 0rpx;
-		border-top: #000 solid 1rpx;
-		border-bottom: #000 solid 1rpx;
+
 	}	
 	
 }
@@ -201,7 +223,6 @@ export default {
 
 .nav {
 	width: 100%;
-	height: 212rpx;
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;

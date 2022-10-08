@@ -5,7 +5,8 @@ let $order = lifeData.$order || {};
 var $order$1 = {
   namespaced: true,
   state: {
-    goodsInOrder: $order.goodsInOrder || {}
+    goodsInOrder: $order.goodsInOrder || {},
+    type: $order.type || ""
   },
   getters: {},
   mutations: {},

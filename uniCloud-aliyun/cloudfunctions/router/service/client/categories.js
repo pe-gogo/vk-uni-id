@@ -73,6 +73,7 @@ var cloudObject = {
 			  as:"goods_list",
 		      // 副表where条件
 		      whereJson: {
+				  
 			  },
 		      // 副表字段显示规则
 		      fieldJson: {

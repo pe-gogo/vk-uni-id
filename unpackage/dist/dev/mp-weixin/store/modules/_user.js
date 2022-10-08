@@ -7,7 +7,8 @@ var $user$1 = {
   state: {
     userInfo: $user.userInfo || {},
     permission: $user.permission || [],
-    order: $user.order || {}
+    order: $user.order || {},
+    chooseAddress: $user.chooseAddress || {}
   },
   getters: {},
   mutations: {},
