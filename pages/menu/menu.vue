@@ -28,7 +28,7 @@
 				</view>
 				<!-- 优惠信息 -->
 				<view class="coupon">
-					<text class="title">"霸气mini卡"超级购券活动，赶紧去购买</text>
+					<text class="title">"龙的传人"嘻嘻哈哈,感觉来劲了	</text>
 					<view class="iconfont icon-arrow-right"></view>
 				</view>
 			</view>

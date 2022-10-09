@@ -19,7 +19,7 @@
 											style="margin-left: 30rpx;margin-top: 4rpx;"
 										></view>
 										<view class="u-row-right"
-											style="position: absolute; right: 10%;"
+											style="position: absolute; right: 10%;font-weight: 600;font-size: 35rpx;"
 										>{{res.payType}}</view>
 									</view>
 									<view class="mtop">
@@ -27,12 +27,15 @@
 												<view class="mtop">
 													<image :src="item.image"></image>
 													<view class="count"
-													>共  {{res.allNumber}}  件</view>
-													<view class="count" style="margin-top: 10%;">实付 ¥{{res.money}} 元</view>
+													>共  
+													<text style="font-size: 30rpx; font-weight: 600;"> {{res.allNumber}}</text>
+													  件</view>
+													<view class="count" style="margin-top: 10%;">实付 ¥
+													 <text style="font-size: 30rpx; font-weight: 600;"> {{res.money}}</text>
+													 元</view>
 												</view>
 										</view>
 									</view>
-									
 							</view>
 						</view>
 					</scroll-view>
